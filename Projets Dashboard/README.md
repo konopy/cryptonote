@@ -193,15 +193,21 @@ muestra al lado para contrastar.
 
 ---
 
-## Datos de ejemplo
+## Proyectos cargados
 
-Los tres proyectos que vienen (`konopy-coin`, `auros-pay`, `terra-nodo`) son datos de
-muestra para que el panel se vea lleno y se entienda cada sección: uno a mitad de camino
-con un hallazgo crítico abierto, uno casi cerrado bloqueado en la venta y uno recién
-arrancado. **Sustitúyelos por los proyectos reales** (o bórralos y crea los tuyos con
-`nuevo_proyecto.py`) antes de usar el panel en serio.
+| Proyecto | Repositorio | Estado |
+|---|---|---|
+| **Konopy FieldOps** | `konopy/FieldOps` | En pruebas: núcleo y producción listos, plan de mercado EE. UU. en curso, fase comercial sin planificar. |
+| **Indigo** | `konopy/indigo` | Planificado: sólo existe el README; falta la definición del producto. |
 
----
+Los datos salen de fuentes reales, no de estimaciones: el historial de git da los días
+trabajados; `ROADMAP.md`, `docs/PLAN-MERCADO-EEUU.md`, `docs/DRY-RUN-*.md` y
+`docs/RECOMENDACIONES-CIERRE-V1.md` dan las tareas, las corridas en frío y los hallazgos.
+Lo que no está escrito en ninguna parte se queda marcado como **sin planificar**, en vez de
+darse por hecho.
+
+Cómo se mantiene el dashboard y qué me tienes que decir para cada cambio:
+[OPERACION.md](OPERACION.md).
 
 ## Estructura del directorio
 
@@ -224,5 +230,6 @@ Projets Dashboard/
     ├── nuevo_proyecto.py           crea un proyecto con todas sus tareas
     ├── bitacora_git.py             bitácora desde el historial de git
     ├── reporte.js                  informe en terminal (Node)
+    ├── preview_html.py             empaqueta todo en un solo HTML
     └── servir.py                   servidor local
 ```

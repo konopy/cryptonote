@@ -2,75 +2,74 @@
 window.PD_DATA = {
  "indice": {
   "nombre": "Projets Dashboard",
-  "descripcion": "Panel de control de todos los proyectos de la plataforma CryptoNote.",
+  "descripcion": "Panel de control de los proyectos de Konopy.",
   "proyectos": [
-   "proyectos/auros-pay.json",
-   "proyectos/konopy-coin.json",
-   "proyectos/terra-nodo.json"
+   "proyectos/fieldops.json",
+   "proyectos/indigo.json"
   ]
  },
  "pipeline": {
-  "version": 1,
-  "descripcion": "Modelo canónico de un proyecto completo: desde la definición hasta la venta. Cada fase tiene requisitos obligatorios; el dashboard compara cada proyecto contra este modelo para decir exactamente qué falta.",
+  "version": 2,
+  "descripcion": "Modelo canónico de un proyecto completo: desde la definición hasta la venta. Cada fase tiene requisitos obligatorios; el dashboard compara cada proyecto contra este modelo para decir exactamente qué falta. Es genérico a propósito: sirve para una app, una moneda o cualquier producto que se construya, se pruebe en frío, se publique y se venda.",
   "fases": [
    {
     "id": "definicion",
     "nombre": "Definición y alcance",
     "peso": 1,
-    "descripcion": "Qué moneda/producto se va a construir, con qué parámetros y para quién.",
+    "descripcion": "Qué se va a construir, para quién y con qué criterio se dará por terminado.",
     "requisitos": [
      {
       "id": "definicion.ficha",
       "nombre": "Ficha del proyecto",
-      "detalle": "Nombre, ticker, símbolo, propósito y público objetivo definidos por escrito."
-     },
-     {
-      "id": "definicion.parametros",
-      "nombre": "Parámetros de la moneda",
-      "detalle": "Emisión total, block reward, block target, dificultad, prefijo de direcciones, puertos P2P/RPC."
+      "detalle": "Qué es, qué problema resuelve, para quién y con qué stack o materiales."
      },
      {
       "id": "definicion.alcance",
       "nombre": "Alcance y entregables",
-      "detalle": "Lista cerrada de entregables y de lo que queda fuera del alcance."
+      "detalle": "Lista cerrada de entregables y de lo que queda explícitamente fuera."
      },
      {
       "id": "definicion.calendario",
-      "nombre": "Calendario y estimación inicial",
+      "nombre": "Calendario y estimación",
       "detalle": "Fecha de inicio, fecha objetivo y estimación de días de trabajo."
+     },
+     {
+      "id": "definicion.criterios",
+      "nombre": "Criterios de terminado",
+      "detalle": "Qué tiene que ser cierto para poder cerrar el proyecto y firmarlo."
      }
     ]
    },
    {
     "id": "desarrollo",
-    "nombre": "Desarrollo y parametrización",
+    "nombre": "Desarrollo y construcción",
     "peso": 3,
-    "descripcion": "Fork del core, configuración de CryptoNoteConfig, génesis y compilación reproducible.",
+    "descripcion": "El producto en sí: el núcleo funcional, sus pruebas y su documentación.",
     "requisitos": [
      {
-      "id": "desarrollo.fork",
-      "nombre": "Fork del core creado",
-      "detalle": "Repositorio propio del proyecto, con historial y remoto configurado."
+      "id": "desarrollo.entorno",
+      "nombre": "Entorno y repositorio",
+      "detalle": "Repositorio, entorno de desarrollo reproducible y guía de instalación."
      },
      {
-      "id": "desarrollo.config",
-      "nombre": "CryptoNoteConfig ajustado",
-      "detalle": "src/CryptoNoteConfig.h con los parámetros de la ficha aplicados."
+      "id": "desarrollo.nucleo",
+      "nombre": "Núcleo funcional construido",
+      "detalle": "Las funciones que justifican el producto, terminadas y usables de punta a punta."
      },
      {
-      "id": "desarrollo.genesis",
-      "nombre": "Bloque génesis generado",
-      "detalle": "Génesis tx hex generado, fijado en el config y verificado."
+      "id": "desarrollo.pruebas",
+      "nombre": "Pruebas automatizadas del flujo crítico",
+      "detalle": "Suite de pruebas que cubre los recorridos que no se pueden romper."
      },
      {
-      "id": "desarrollo.compilacion",
-      "nombre": "Compilación en las plataformas objetivo",
-      "detalle": "Daemon, simplewallet y walletd compilan sin errores en las plataformas objetivo."
+      "id": "desarrollo.documentacion",
+      "nombre": "Documentación de uso",
+      "detalle": "Manuales por rol o guía de uso, y documentación técnica de despliegue."
      },
      {
-      "id": "desarrollo.checkpoints",
-      "nombre": "Semillas y checkpoints",
-      "detalle": "Seed nodes y checkpoints iniciales definidos en el código."
+      "id": "desarrollo.revision",
+      "nombre": "Revisión de seguridad y cumplimiento",
+      "detalle": "Repaso de seguridad, permisos, datos personales y obligaciones legales del sector."
      }
     ]
    },
@@ -78,32 +77,32 @@ window.PD_DATA = {
     "id": "corridas_frio",
     "nombre": "Corridas en frío",
     "peso": 2,
-    "descripcion": "Arranques de red controlados en entorno aislado, antes de exponer nada al público.",
+    "descripcion": "Ensayos controlados de extremo a extremo antes de exponer el producto a clientes reales.",
     "requisitos": [
      {
       "id": "corridas_frio.plan",
       "nombre": "Plan de corridas en frío",
-      "detalle": "Escenarios a probar, criterios de éxito y datos a medir en cada corrida."
+      "detalle": "Escenarios a probar, criterios de éxito y qué se mide en cada corrida."
      },
      {
-      "id": "corridas_frio.arranque",
-      "nombre": "Corrida de arranque de red",
-      "detalle": "Red levantada desde el bloque 0 con varios nodos y sincronización correcta."
+      "id": "corridas_frio.ensayo",
+      "nombre": "Corrida de ensayo interna",
+      "detalle": "Recorrido completo de punta a punta hecho por el equipo, sin usuarios externos."
      },
      {
-      "id": "corridas_frio.minado",
-      "nombre": "Corrida de minado y dificultad",
-      "detalle": "Minado sostenido, ajuste de dificultad y emisión verificados contra lo definido."
+      "id": "corridas_frio.reales",
+      "nombre": "Corrida con usuarios y equipos reales",
+      "detalle": "Personas reales, en sus dispositivos y condiciones reales, sin ayuda."
      },
      {
-      "id": "corridas_frio.transacciones",
-      "nombre": "Corrida de transacciones y wallets",
-      "detalle": "Envíos, recepciones, mixin, reorgs y recuperación de wallets probados."
+      "id": "corridas_frio.datos",
+      "nombre": "Corrida con datos y volumen reales",
+      "detalle": "Comportamiento con el volumen, los datos y la carga que habrá en producción."
      },
      {
-      "id": "corridas_frio.carga",
-      "nombre": "Corrida de carga y resistencia",
-      "detalle": "Comportamiento bajo volumen alto de transacciones y con nodos cayendo."
+      "id": "corridas_frio.recuperacion",
+      "nombre": "Corrida de fallo y recuperación",
+      "detalle": "Provocar la caída y comprobar que el sistema y los datos vuelven."
      }
     ]
    },
@@ -120,46 +119,46 @@ window.PD_DATA = {
      },
      {
       "id": "estabilizacion.hallazgos",
-      "nombre": "Hallazgos críticos cerrados",
-      "detalle": "Ningún hallazgo de severidad crítica o alta queda abierto."
+      "nombre": "Hallazgos críticos y altos cerrados",
+      "detalle": "Ningún hallazgo bloqueante queda abierto."
      },
      {
       "id": "estabilizacion.mejoras",
-      "nombre": "Mejoras aplicadas a la plataforma",
-      "detalle": "Las mejoras aceptadas están implementadas y re-probadas en una corrida posterior."
+      "nombre": "Mejoras aplicadas y re-probadas",
+      "detalle": "Las mejoras aceptadas están implementadas y verificadas en una corrida posterior."
      },
      {
       "id": "estabilizacion.congelado",
       "nombre": "Versión congelada para lanzamiento",
-      "detalle": "Tag/release candidato con binarios reproducibles y notas de versión."
+      "detalle": "Release candidato, notas de versión y acta de cierre firmada."
      }
     ]
    },
    {
     "id": "infraestructura",
-    "nombre": "Infraestructura pública",
+    "nombre": "Infraestructura y producción",
     "peso": 2,
-    "descripcion": "Lo que tiene que estar en línea para que la moneda exista de cara al público.",
+    "descripcion": "Lo que tiene que estar en línea y sostenerse solo para que el producto exista de verdad.",
     "requisitos": [
      {
-      "id": "infraestructura.nodos",
-      "nombre": "Nodos semilla en producción",
-      "detalle": "Al menos dos seed nodes estables, monitorizados y con respaldo."
+      "id": "infraestructura.produccion",
+      "nombre": "Entorno de producción estable",
+      "detalle": "Servidor, dominio, HTTPS y datos de producción funcionando."
      },
      {
-      "id": "infraestructura.explorador",
-      "nombre": "Explorador de bloques",
-      "detalle": "Block explorer público funcionando contra la red real."
+      "id": "infraestructura.despliegue",
+      "nombre": "Despliegue reproducible",
+      "detalle": "Publicar una versión nueva es un procedimiento repetible y verificado."
      },
      {
-      "id": "infraestructura.pool",
-      "nombre": "Pool de minado",
-      "detalle": "Pool operativo y documentado para mineros externos."
+      "id": "infraestructura.respaldo",
+      "nombre": "Respaldo y restauración probados",
+      "detalle": "Copias automáticas y una restauración ensayada de verdad, no sólo documentada."
      },
      {
-      "id": "infraestructura.binarios",
-      "nombre": "Binarios y guías de instalación",
-      "detalle": "Releases descargables y guía de instalación/uso publicada."
+      "id": "infraestructura.monitoreo",
+      "nombre": "Monitoreo y alertas",
+      "detalle": "Se sabe que algo se cayó sin que lo cuente un usuario."
      }
     ]
    },
@@ -167,12 +166,12 @@ window.PD_DATA = {
     "id": "landing",
     "nombre": "Landing page de producto",
     "peso": 1,
-    "descripcion": "La página de producto que convierte visitantes en usuarios y compradores.",
+    "descripcion": "La página de producto que convierte visitantes en interesados y compradores.",
     "requisitos": [
      {
       "id": "landing.identidad",
       "nombre": "Identidad visual",
-      "detalle": "Logo, paleta, tipografía y assets del proyecto."
+      "detalle": "Nombre, logo, paleta, tipografía y reglas de marca."
      },
      {
       "id": "landing.copy",
@@ -182,12 +181,12 @@ window.PD_DATA = {
      {
       "id": "landing.publicada",
       "nombre": "Landing publicada",
-      "detalle": "Dominio, hosting, HTTPS y página en línea."
+      "detalle": "Dominio, hosting, HTTPS y página en línea de cara al público."
      },
      {
       "id": "landing.analitica",
       "nombre": "Analítica y captación",
-      "detalle": "Medición de visitas/conversión y captura de correos operativas."
+      "detalle": "Medición de visitas y conversión, y captura de contactos operativa."
      }
     ]
    },
@@ -200,7 +199,7 @@ window.PD_DATA = {
      {
       "id": "genoma.posicionamiento",
       "nombre": "Posicionamiento y diferenciador",
-      "detalle": "Categoría, competidores y por qué este proyecto es distinto."
+      "detalle": "Categoría, competidores y por qué este producto es distinto."
      },
      {
       "id": "genoma.audiencia",
@@ -210,12 +209,12 @@ window.PD_DATA = {
      {
       "id": "genoma.mensajes",
       "nombre": "Matriz de mensajes",
-      "detalle": "Mensaje maestro y variantes por segmento y por canal."
+      "detalle": "Mensaje maestro y variantes por segmento, canal e idioma."
      },
      {
       "id": "genoma.canales",
-      "nombre": "Canales y calendario",
-      "detalle": "Canales priorizados, calendario de contenidos y presupuesto."
+      "nombre": "Canales, calendario y presupuesto",
+      "detalle": "Canales priorizados, calendario de contenidos y cuánto se invierte."
      },
      {
       "id": "genoma.metricas",
@@ -228,27 +227,27 @@ window.PD_DATA = {
     "id": "publicacion",
     "nombre": "Publicación y lanzamiento",
     "peso": 2,
-    "descripcion": "Salida pública de la moneda y del producto.",
+    "descripcion": "Salida pública del producto.",
     "requisitos": [
      {
       "id": "publicacion.anuncio",
       "nombre": "Anuncio de lanzamiento",
-      "detalle": "Hilo de anuncio, nota de prensa y publicaciones en redes y foros."
+      "detalle": "Nota de lanzamiento y publicaciones en los canales elegidos."
      },
      {
-      "id": "publicacion.listados",
-      "nombre": "Listados y directorios",
-      "detalle": "Alta en directorios de monedas, agregadores y comunidades."
+      "id": "publicacion.presencia",
+      "nombre": "Presencia pública y directorios",
+      "detalle": "Web pública, perfiles y alta en los directorios donde busca el cliente."
      },
      {
-      "id": "publicacion.red_viva",
-      "nombre": "Red en producción abierta",
-      "detalle": "Red pública minando de forma estable con mineros externos."
+      "id": "publicacion.disponible",
+      "nombre": "Producto disponible para usuarios reales",
+      "detalle": "Cualquiera del público objetivo puede entrar y usarlo sin intervención del equipo."
      },
      {
       "id": "publicacion.soporte",
-      "nombre": "Canales de soporte",
-      "detalle": "Comunidad, soporte y documentación pública atendidos."
+      "nombre": "Soporte y documentación pública",
+      "detalle": "Canal de soporte atendido y documentación accesible al usuario final."
      }
     ]
    },
@@ -266,7 +265,7 @@ window.PD_DATA = {
      {
       "id": "venta.cobro",
       "nombre": "Medio de cobro operativo",
-      "detalle": "Pasarela, exchange u OTC probado con una transacción real."
+      "detalle": "Pasarela, contrato y facturación probados con una transacción real."
      },
      {
       "id": "venta.primera_venta",
@@ -276,7 +275,7 @@ window.PD_DATA = {
      {
       "id": "venta.seguimiento",
       "nombre": "Seguimiento comercial",
-      "detalle": "Registro de ventas, ingresos y siguientes pasos comerciales."
+      "detalle": "Registro de ventas, ingresos, renovaciones y siguientes pasos comerciales."
      }
     ]
    }
@@ -305,1719 +304,1332 @@ window.PD_DATA = {
  },
  "proyectos": [
   {
-   "id": "auros-pay",
-   "nombre": "Auros Pay",
-   "ticker": "AUR",
-   "descripcion": "Moneda de pagos rápidos con block target corto, ya publicada y en fase de comercialización.",
-   "estado": "en_venta",
-   "responsable": "E. Palomares",
+   "id": "fieldops",
+   "nombre": "Konopy FieldOps",
+   "ticker": "",
+   "descripcion": "Software de operación de campo para empresas de construcción: jornada del trabajador con foto y GPS, compras, comisiones, facturas, contratos con firma y reportes. Laravel 12 sobre hosting compartido, PWA y app nativa Android.",
+   "estado": "en_pruebas",
+   "responsable": "Arthuro",
    "equipo": [
-    "E. Palomares",
-    "Dev 2",
+    "Arthuro",
+    "Konopy Dev",
+    "Codex",
+    "Claude",
     "Marketing"
    ],
-   "repositorio": "https://github.com/konopy/auros-pay",
-   "fecha_inicio": "2026-02-09",
-   "fecha_objetivo": "2026-08-31",
+   "repositorio": "https://github.com/konopy/FieldOps",
+   "fecha_inicio": "2026-06-15",
+   "fecha_objetivo": null,
    "fecha_fin": null,
-   "estimacion_inicial_dias": 60,
-   "estimaciones": [
-    {
-     "fecha": "2026-02-09",
-     "dias_restantes": 60,
-     "nota": "Estimación inicial."
-    },
-    {
-     "fecha": "2026-05-04",
-     "dias_restantes": 35,
-     "nota": "Retraso por la corrida de carga fallida de abril."
-    },
-    {
-     "fecha": "2026-08-10",
-     "dias_restantes": 8,
-     "nota": "Sólo queda cerrar la parte comercial."
-    }
-   ],
-   "parametros_moneda": {
-    "emision_total": "184467440737095516 unidades atómicas",
-    "block_target_segundos": 60,
-    "block_reward": "emisión decreciente estilo CryptoNote",
-    "prefijo_direcciones": "AUR",
-    "puerto_p2p": 18800,
-    "puerto_rpc": 18801
-   },
+   "estimacion_inicial_dias": null,
+   "estimaciones": [],
    "tareas": [
     {
      "id": "t-001",
-     "titulo": "Ficha de producto",
+     "titulo": "Ficha de producto (README + CLAUDE.md)",
      "fase": "definicion",
-     "requisito": "definicion.ficha",
      "estado": "hecha",
      "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-02-11",
-     "notas": ""
+     "responsable": "Arthuro",
+     "vence": "",
+     "notas": "",
+     "requisito": "definicion.ficha"
     },
     {
      "id": "t-002",
-     "titulo": "Parámetros de la moneda",
+     "titulo": "Alcance y entregables (ROADMAP v2 + backlog)",
      "fase": "definicion",
-     "requisito": "definicion.parametros",
      "estado": "hecha",
      "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 2,
-     "vence": "2026-02-13",
-     "notas": ""
+     "responsable": "Arthuro",
+     "vence": "",
+     "notas": "",
+     "requisito": "definicion.alcance"
     },
     {
      "id": "t-003",
-     "titulo": "Alcance y entregables",
+     "titulo": "Criterios de cierre v1 (cero P0/P1, respaldo restaurable, deploy reproducible, monitoreo)",
      "fase": "definicion",
-     "requisito": "definicion.alcance",
      "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-02-13",
-     "notas": ""
+     "prioridad": "alta",
+     "responsable": "Arthuro",
+     "vence": "",
+     "notas": "",
+     "requisito": "definicion.criterios"
     },
     {
      "id": "t-004",
-     "titulo": "Calendario y estimación",
+     "titulo": "Fijar fecha objetivo de cierre v1 y del plan de mercado EE. UU.",
      "fase": "definicion",
+     "estado": "pendiente",
+     "prioridad": "alta",
+     "responsable": "Arthuro",
+     "vence": "",
+     "notas": "El proyecto no tiene fecha objetivo declarada: sin ella el dashboard no puede calcular desvío.",
      "requisito": "definicion.calendario",
-     "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-02-14",
-     "notas": ""
+     "estimacion_dias": 1
     },
     {
      "id": "t-010",
-     "titulo": "Fork del core",
+     "titulo": "Entorno reproducible, repositorio y guía de instalación",
      "fase": "desarrollo",
-     "requisito": "desarrollo.fork",
      "estado": "hecha",
      "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 1,
-     "vence": "2026-02-17",
-     "notas": ""
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "",
+     "requisito": "desarrollo.entorno"
     },
     {
      "id": "t-011",
-     "titulo": "CryptoNoteConfig ajustado",
+     "titulo": "Núcleo funcional: fases 1–19 del roadmap completadas",
      "fase": "desarrollo",
-     "requisito": "desarrollo.config",
      "estado": "hecha",
      "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 3,
-     "vence": "2026-02-25",
-     "notas": ""
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "Jornada del trabajador, compras y comisiones, facturas y PDF, multiempresa, contratos con firma, estimador de planos y reportes. El núcleo queda en curso hasta cerrar el plan de mercado EE. UU. (tareas C1–C5 y X1–X7), que es lo que falta para poder venderlo allí.",
+     "requisito": "desarrollo.nucleo"
     },
     {
      "id": "t-012",
-     "titulo": "Bloque génesis",
+     "titulo": "Suite de pruebas del flujo crítico (205+ pruebas)",
      "fase": "desarrollo",
-     "requisito": "desarrollo.genesis",
      "estado": "hecha",
      "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-03-02",
-     "notas": ""
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "",
+     "requisito": "desarrollo.pruebas"
     },
     {
      "id": "t-013",
-     "titulo": "Compilación multiplataforma",
+     "titulo": "Manuales por rol y documentación de despliegue",
      "fase": "desarrollo",
-     "requisito": "desarrollo.compilacion",
      "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 4,
-     "vence": "2026-03-12",
-     "notas": ""
+     "prioridad": "media",
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "Manuales de trabajador, PM/foreman, admin/office, superadmin y soporte/deploy.",
+     "requisito": "desarrollo.documentacion"
     },
     {
      "id": "t-014",
-     "titulo": "Semillas y checkpoints",
+     "titulo": "Revisión de seguridad y cumplimiento",
      "fase": "desarrollo",
-     "requisito": "desarrollo.checkpoints",
-     "estado": "hecha",
+     "estado": "en_progreso",
      "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-03-16",
-     "notas": ""
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "Base de seguridad hecha (headers, CSRF, RBAC, throttle). Faltan 2FA para ADMIN/OFFICE (X5) y ToS/Privacy (X7).",
+     "requisito": "desarrollo.revision",
+     "estimacion_dias": 3
     },
     {
      "id": "t-020",
-     "titulo": "Plan de corridas en frío",
-     "fase": "corridas_frio",
-     "requisito": "corridas_frio.plan",
-     "estado": "hecha",
+     "titulo": "C1 · Overtime 1.5× (FLSA) en la nómina",
+     "fase": "desarrollo",
+     "estado": "en_progreso",
      "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-03-18",
-     "notas": ""
+     "responsable": "Claude",
+     "vence": "",
+     "notas": "Implementado en el PR #38 del 3 de septiembre; el plan todavía lo marca EN CURSO. Confirmar si se puede cerrar.",
+     "estimacion_dias": 3,
+     "requisito": "desarrollo.nucleo"
     },
     {
      "id": "t-021",
-     "titulo": "Corrida de arranque",
-     "fase": "corridas_frio",
-     "requisito": "corridas_frio.arranque",
-     "estado": "hecha",
+     "titulo": "C2 · Lien waivers de Texas",
+     "fase": "desarrollo",
+     "estado": "pendiente",
      "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 1,
-     "vence": "2026-03-23",
-     "notas": ""
+     "responsable": "Claude",
+     "vence": "",
+     "notas": "",
+     "estimacion_dias": 4,
+     "requisito": "desarrollo.nucleo"
     },
     {
      "id": "t-022",
-     "titulo": "Corrida de minado y dificultad",
-     "fase": "corridas_frio",
-     "requisito": "corridas_frio.minado",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
+     "titulo": "C3 · Lenguaje del cierre automático",
+     "fase": "desarrollo",
+     "estado": "pendiente",
+     "prioridad": "media",
+     "responsable": "Claude",
+     "vence": "",
+     "notas": "",
      "estimacion_dias": 2,
-     "vence": "2026-04-02",
-     "notas": ""
+     "requisito": "desarrollo.nucleo"
     },
     {
      "id": "t-023",
-     "titulo": "Corrida de transacciones y wallets",
-     "fase": "corridas_frio",
-     "requisito": "corridas_frio.transacciones",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 3,
-     "vence": "2026-04-14",
-     "notas": ""
+     "titulo": "C4 · Consentimiento del trabajador",
+     "fase": "desarrollo",
+     "estado": "pendiente",
+     "prioridad": "media",
+     "responsable": "Claude",
+     "vence": "",
+     "notas": "",
+     "estimacion_dias": 2,
+     "requisito": "desarrollo.nucleo"
     },
     {
      "id": "t-024",
-     "titulo": "Corrida de carga",
-     "fase": "corridas_frio",
-     "requisito": "corridas_frio.carga",
-     "estado": "hecha",
+     "titulo": "C5 · Daily log que protege: clima, headcount y delays",
+     "fase": "desarrollo",
+     "estado": "pendiente",
      "prioridad": "media",
-     "responsable": "Dev 2",
+     "responsable": "Claude",
+     "vence": "",
+     "notas": "",
      "estimacion_dias": 3,
-     "vence": "2026-05-06",
-     "notas": "Repetida tras el fallo de abril."
+     "requisito": "desarrollo.nucleo"
     },
     {
      "id": "t-030",
-     "titulo": "Reportes de frío de las 4 corridas",
-     "fase": "estabilizacion",
-     "requisito": "estabilizacion.reportes",
-     "estado": "hecha",
+     "titulo": "X1 · QuickBooks Online fase 1",
+     "fase": "desarrollo",
+     "estado": "en_progreso",
      "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 3,
-     "vence": "2026-05-08",
-     "notas": ""
+     "responsable": "Codex",
+     "vence": "",
+     "notas": "Ya asignada, en curso según el plan maestro.",
+     "estimacion_dias": 5,
+     "requisito": "desarrollo.nucleo"
     },
     {
      "id": "t-031",
-     "titulo": "Cerrar hallazgos críticos y altos",
-     "fase": "estabilizacion",
-     "requisito": "estabilizacion.hallazgos",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 6,
-     "vence": "2026-05-22",
-     "notas": ""
+     "titulo": "X2 · Conciliación bancaria por CSV",
+     "fase": "desarrollo",
+     "estado": "pendiente",
+     "prioridad": "media",
+     "responsable": "Codex",
+     "vence": "",
+     "notas": "Va después de X1.",
+     "estimacion_dias": 4,
+     "requisito": "desarrollo.nucleo"
     },
     {
      "id": "t-032",
-     "titulo": "Aplicar y re-probar mejoras",
-     "fase": "estabilizacion",
-     "requisito": "estabilizacion.mejoras",
-     "estado": "hecha",
+     "titulo": "X3 · Retainage + Pay Application (AIA G702/G703)",
+     "fase": "desarrollo",
+     "estado": "pendiente",
      "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 4,
-     "vence": "2026-05-29",
-     "notas": ""
+     "responsable": "Codex",
+     "vence": "",
+     "notas": "La más importante del plan: sin esto no se factura a un GC comercial en EE. UU.",
+     "estimacion_dias": 8,
+     "requisito": "desarrollo.nucleo"
     },
     {
      "id": "t-033",
-     "titulo": "Congelar versión 1.0.0",
-     "fase": "estabilizacion",
-     "requisito": "estabilizacion.congelado",
-     "estado": "hecha",
+     "titulo": "X4 · Subcontratistas: W-9, 1099-NEC y rastreo de COI",
+     "fase": "desarrollo",
+     "estado": "pendiente",
+     "prioridad": "alta",
+     "responsable": "Codex",
+     "vence": "",
+     "notas": "",
+     "estimacion_dias": 5,
+     "requisito": "desarrollo.nucleo"
+    },
+    {
+     "id": "t-034",
+     "titulo": "X5 · 2FA para usuarios ADMIN/OFFICE",
+     "fase": "desarrollo",
+     "estado": "pendiente",
+     "prioridad": "alta",
+     "responsable": "Codex",
+     "vence": "",
+     "notas": "",
+     "estimacion_dias": 3,
+     "requisito": "desarrollo.nucleo"
+    },
+    {
+     "id": "t-035",
+     "titulo": "X6 · Export total por empresa",
+     "fase": "desarrollo",
+     "estado": "pendiente",
      "prioridad": "media",
-     "responsable": "Dev 2",
-     "estimacion_dias": 1,
-     "vence": "2026-06-02",
-     "notas": ""
+     "responsable": "Codex",
+     "vence": "",
+     "notas": "",
+     "estimacion_dias": 3,
+     "requisito": "desarrollo.nucleo"
+    },
+    {
+     "id": "t-036",
+     "titulo": "X7 · Páginas de Términos y Privacidad",
+     "fase": "desarrollo",
+     "estado": "pendiente",
+     "prioridad": "media",
+     "responsable": "Codex",
+     "vence": "",
+     "notas": "",
+     "estimacion_dias": 2,
+     "requisito": "desarrollo.nucleo"
     },
     {
      "id": "t-040",
-     "titulo": "Seed nodes en producción",
-     "fase": "infraestructura",
-     "requisito": "infraestructura.nodos",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-06-05",
-     "notas": ""
+     "titulo": "Tablero de proyectos: arrastrar y soltar",
+     "fase": "desarrollo",
+     "estado": "pendiente",
+     "prioridad": "baja",
+     "responsable": "",
+     "vence": "",
+     "notas": "Único pendiente del tablero; el resto está hecho.",
+     "estimacion_dias": 2
     },
     {
      "id": "t-041",
-     "titulo": "Explorador de bloques",
-     "fase": "infraestructura",
-     "requisito": "infraestructura.explorador",
-     "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "Dev 2",
-     "estimacion_dias": 3,
-     "vence": "2026-06-12",
-     "notas": ""
+     "titulo": "Webhook a GoHighLevel al cambiar de estado un proyecto",
+     "fase": "desarrollo",
+     "estado": "pendiente",
+     "prioridad": "baja",
+     "responsable": "",
+     "vence": "",
+     "notas": "",
+     "estimacion_dias": 2
     },
     {
      "id": "t-042",
-     "titulo": "Pool de minado público",
-     "fase": "infraestructura",
-     "requisito": "infraestructura.pool",
-     "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "Dev 2",
-     "estimacion_dias": 3,
-     "vence": "2026-06-19",
-     "notas": ""
-    },
-    {
-     "id": "t-043",
-     "titulo": "Binarios y guía de instalación",
-     "fase": "infraestructura",
-     "requisito": "infraestructura.binarios",
-     "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-06-23",
-     "notas": ""
+     "titulo": "Notificaciones por WhatsApp",
+     "fase": "desarrollo",
+     "estado": "pendiente",
+     "prioridad": "baja",
+     "responsable": "",
+     "vence": "",
+     "notas": "",
+     "estimacion_dias": 3
     },
     {
      "id": "t-050",
-     "titulo": "Identidad visual",
-     "fase": "landing",
-     "requisito": "landing.identidad",
+     "titulo": "Plan de pruebas de Fase 20: guion, prevuelo y acta",
+     "fase": "corridas_frio",
      "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "Marketing",
-     "estimacion_dias": 3,
-     "vence": "2026-06-26",
-     "notas": ""
+     "prioridad": "alta",
+     "responsable": "Arthuro",
+     "vence": "",
+     "notas": "",
+     "requisito": "corridas_frio.plan"
     },
     {
      "id": "t-051",
-     "titulo": "Copy de la landing",
-     "fase": "landing",
-     "requisito": "landing.copy",
+     "titulo": "Dry-run automatizado del guion de Fase 20",
+     "fase": "corridas_frio",
      "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "Marketing",
-     "estimacion_dias": 2,
-     "vence": "2026-06-30",
-     "notas": ""
+     "prioridad": "alta",
+     "responsable": "Claude",
+     "vence": "",
+     "notas": "Ejecutado el 4 de agosto: los tres recorridos completan su columna vertebral.",
+     "requisito": "corridas_frio.ensayo"
     },
     {
      "id": "t-052",
-     "titulo": "Publicar landing en auros.pay",
-     "fase": "landing",
-     "requisito": "landing.publicada",
-     "estado": "hecha",
+     "titulo": "Prueba de usabilidad con 2–3 usuarios reales (WORKER, PM y OFFICE)",
+     "fase": "corridas_frio",
+     "estado": "pendiente",
      "prioridad": "alta",
-     "responsable": "Marketing",
-     "estimacion_dias": 2,
-     "vence": "2026-07-06",
-     "notas": ""
+     "responsable": "Arthuro",
+     "vence": "",
+     "notas": "Es el pendiente que bloquea el cierre v1: hay guion y acta preparados, pero no se ha ejecutado.",
+     "requisito": "corridas_frio.reales",
+     "estimacion_dias": 2
     },
     {
      "id": "t-053",
-     "titulo": "Analítica y captura de correos",
-     "fase": "landing",
-     "requisito": "landing.analitica",
-     "estado": "en_progreso",
-     "prioridad": "media",
-     "responsable": "Marketing",
-     "estimacion_dias": 1,
-     "vence": "2026-08-20",
-     "notas": "Falta conectar el formulario al CRM."
+     "titulo": "Validación en teléfonos reales: cámara, GPS, sin conexión, passkeys/Face ID y PIN",
+     "fase": "corridas_frio",
+     "estado": "pendiente",
+     "prioridad": "alta",
+     "responsable": "Arthuro",
+     "vence": "",
+     "notas": "El ensayo automatizado no pudo cubrirlo: requiere hardware.",
+     "requisito": "corridas_frio.reales",
+     "estimacion_dias": 1
     },
     {
      "id": "t-060",
-     "titulo": "Posicionamiento y diferenciador",
-     "fase": "genoma_marketing",
-     "requisito": "genoma.posicionamiento",
+     "titulo": "Reportes de frío de las corridas y auditorías",
+     "fase": "estabilizacion",
      "estado": "hecha",
      "prioridad": "alta",
-     "responsable": "Marketing",
-     "estimacion_dias": 2,
-     "vence": "2026-07-10",
-     "notas": ""
+     "responsable": "Claude",
+     "vence": "",
+     "notas": "",
+     "requisito": "estabilizacion.reportes"
     },
     {
      "id": "t-061",
-     "titulo": "Audiencias y buyer persona",
-     "fase": "genoma_marketing",
-     "requisito": "genoma.audiencia",
-     "estado": "hecha",
+     "titulo": "Cerrar los hallazgos P0/P1 que salgan de la prueba real",
+     "fase": "estabilizacion",
+     "estado": "pendiente",
      "prioridad": "alta",
-     "responsable": "Marketing",
-     "estimacion_dias": 2,
-     "vence": "2026-07-14",
-     "notas": ""
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "Depende de que se ejecute la prueba de usabilidad (t-052).",
+     "requisito": "estabilizacion.hallazgos",
+     "estimacion_dias": 4
     },
     {
      "id": "t-062",
-     "titulo": "Matriz de mensajes por canal",
-     "fase": "genoma_marketing",
-     "requisito": "genoma.mensajes",
+     "titulo": "Aplicar las mejoras del dry-run y de la auditoría UX",
+     "fase": "estabilizacion",
      "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "Marketing",
-     "estimacion_dias": 2,
-     "vence": "2026-07-20",
-     "notas": ""
+     "prioridad": "alta",
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "Flotantes que tapaban formularios y secuencia PM sin doble aprobación: corregidos y recompilados.",
+     "requisito": "estabilizacion.mejoras"
     },
     {
      "id": "t-063",
-     "titulo": "Canales, calendario y presupuesto",
-     "fase": "genoma_marketing",
-     "requisito": "genoma.canales",
-     "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "Marketing",
-     "estimacion_dias": 2,
-     "vence": "2026-07-24",
-     "notas": ""
-    },
-    {
-     "id": "t-064",
-     "titulo": "KPIs y metas por canal",
-     "fase": "genoma_marketing",
-     "requisito": "genoma.metricas",
-     "estado": "en_progreso",
-     "prioridad": "media",
-     "responsable": "Marketing",
-     "estimacion_dias": 1,
-     "vence": "2026-08-14",
-     "notas": "Faltan las metas de referidos."
+     "titulo": "Congelar la v1 y firmar el acta GO/NO-GO",
+     "fase": "estabilizacion",
+     "estado": "pendiente",
+     "prioridad": "alta",
+     "responsable": "Arthuro",
+     "vence": "",
+     "notas": "",
+     "requisito": "estabilizacion.congelado",
+     "estimacion_dias": 1
     },
     {
      "id": "t-070",
-     "titulo": "Anuncio de lanzamiento",
-     "fase": "publicacion",
-     "requisito": "publicacion.anuncio",
+     "titulo": "Producción en ops.konopy.com (Hostinger compartido)",
+     "fase": "infraestructura",
      "estado": "hecha",
      "prioridad": "alta",
-     "responsable": "Marketing",
-     "estimacion_dias": 1,
-     "vence": "2026-07-28",
-     "notas": ""
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "",
+     "requisito": "infraestructura.produccion"
     },
     {
      "id": "t-071",
-     "titulo": "Alta en directorios y agregadores",
-     "fase": "publicacion",
-     "requisito": "publicacion.listados",
+     "titulo": "Despliegue reproducible con deploy.sh y smoke obligatorio",
+     "fase": "infraestructura",
      "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "Marketing",
-     "estimacion_dias": 2,
-     "vence": "2026-08-03",
-     "notas": ""
+     "prioridad": "alta",
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "",
+     "requisito": "infraestructura.despliegue"
     },
     {
      "id": "t-072",
-     "titulo": "Red pública estable con mineros externos",
-     "fase": "publicacion",
-     "requisito": "publicacion.red_viva",
+     "titulo": "Respaldo ops:backup y ensayo de restauración",
+     "fase": "infraestructura",
      "estado": "hecha",
      "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-08-05",
-     "notas": ""
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "Restauración verificada en base aislada (44 tablas) y archivos comparados 1:1.",
+     "requisito": "infraestructura.respaldo"
     },
     {
      "id": "t-073",
-     "titulo": "Canales de soporte y documentación",
-     "fase": "publicacion",
-     "requisito": "publicacion.soporte",
+     "titulo": "Monitoreo: /up y monitor programado cada 15 minutos",
+     "fase": "infraestructura",
      "estado": "hecha",
      "prioridad": "media",
-     "responsable": "Marketing",
-     "estimacion_dias": 2,
-     "vence": "2026-08-07",
-     "notas": ""
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "",
+     "requisito": "infraestructura.monitoreo"
+    },
+    {
+     "id": "t-074",
+     "titulo": "Automatizar la copia off-site del respaldo",
+     "fase": "infraestructura",
+     "estado": "pendiente",
+     "prioridad": "media",
+     "responsable": "Konopy Dev",
+     "vence": "",
+     "notas": "Señalado en las recomendaciones de cierre v1: hoy el off-site no está automatizado.",
+     "estimacion_dias": 2
+    },
+    {
+     "id": "t-075",
+     "titulo": "Conectar Hermes/Open WebUI en producción (HTTPS válido, API key, modelo aprobado)",
+     "fase": "infraestructura",
+     "estado": "pendiente",
+     "prioridad": "alta",
+     "responsable": "Arthuro",
+     "vence": "",
+     "notas": "Objetivo final de la Fase 20; hoy la IA en producción depende de esto.",
+     "estimacion_dias": 2
     },
     {
      "id": "t-080",
-     "titulo": "Definir oferta y precios",
-     "fase": "venta",
-     "requisito": "venta.oferta",
+     "titulo": "Identidad de marca Konopy FieldOps",
+     "fase": "landing",
      "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 2,
-     "vence": "2026-08-12",
-     "notas": ""
+     "prioridad": "media",
+     "responsable": "Marketing",
+     "vence": "",
+     "notas": "Reglas de marca fijadas: siempre 'Konopy FieldOps', nunca las mitades por separado.",
+     "requisito": "landing.identidad"
     },
     {
      "id": "t-081",
-     "titulo": "Medio de cobro probado con transacción real",
-     "fase": "venta",
-     "requisito": "venta.cobro",
-     "estado": "en_progreso",
-     "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 3,
-     "vence": "2026-08-28",
-     "notas": "Verificación KYC del OTC pendiente desde hace 10 días."
+     "titulo": "Copy y propuesta de valor de la landing (EN/ES)",
+     "fase": "landing",
+     "estado": "hecha",
+     "prioridad": "media",
+     "responsable": "Marketing",
+     "vence": "",
+     "notas": "Redactada en docs/marketing/landing-konopy-fieldops.html a partir del mensaje central.",
+     "requisito": "landing.copy"
     },
     {
      "id": "t-082",
-     "titulo": "Cerrar la primera venta",
-     "fase": "venta",
-     "requisito": "venta.primera_venta",
-     "estado": "bloqueada",
-     "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 2,
-     "vence": "2026-09-05",
-     "notas": "Bloqueada hasta que el medio de cobro esté operativo."
-    },
-    {
-     "id": "t-083",
-     "titulo": "Registro de ventas e ingresos",
-     "fase": "venta",
-     "requisito": "venta.seguimiento",
+     "titulo": "C6 · Publicar la landing nueva",
+     "fase": "landing",
      "estado": "pendiente",
      "prioridad": "media",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-09-12",
-     "notas": ""
+     "responsable": "Claude",
+     "vence": "",
+     "notas": "El plan la deja para el final, cuando las funciones del mercado EE. UU. estén vivas.",
+     "requisito": "landing.publicada",
+     "estimacion_dias": 3
+    },
+    {
+     "id": "t-090",
+     "titulo": "Posicionamiento y estudio competitivo (ago-2026)",
+     "fase": "genoma_marketing",
+     "estado": "hecha",
+     "prioridad": "alta",
+     "responsable": "Marketing",
+     "vence": "",
+     "notas": "",
+     "requisito": "genoma.posicionamiento"
+    },
+    {
+     "id": "t-091",
+     "titulo": "Audiencia y buyer persona: subcontratistas de acero de 5–50 trabajadores en Texas",
+     "fase": "genoma_marketing",
+     "estado": "hecha",
+     "prioridad": "alta",
+     "responsable": "Marketing",
+     "vence": "",
+     "notas": "",
+     "requisito": "genoma.audiencia"
+    },
+    {
+     "id": "t-092",
+     "titulo": "Matriz de mensajes bilingüe: one-pager, anuncios sociales, guion de demo y secuencias GHL",
+     "fase": "genoma_marketing",
+     "estado": "hecha",
+     "prioridad": "alta",
+     "responsable": "Marketing",
+     "vence": "",
+     "notas": "",
+     "requisito": "genoma.mensajes"
+    },
+    {
+     "id": "t-093",
+     "titulo": "Canales, calendario y presupuesto",
+     "fase": "genoma_marketing",
+     "estado": "en_progreso",
+     "prioridad": "media",
+     "responsable": "Marketing",
+     "vence": "",
+     "notas": "Los canales están definidos (GHL, social, demo); falta el calendario de publicación y el presupuesto.",
+     "requisito": "genoma.canales",
+     "estimacion_dias": 2
     }
    ],
    "corridas_frio": [
     {
      "id": "cf-01",
-     "fecha": "2026-03-22",
-     "tipo": "arranque",
-     "objetivo": "Arranque desde bloque 0 con 3 nodos.",
-     "duracion_horas": 4,
-     "resultado": "ok",
-     "nodos": 3,
-     "bloques": 190,
-     "metricas": {
-      "tiempo_bloque_promedio_s": 61,
-      "reorgs": 0
-     },
-     "incidencias": [],
-     "notas": ""
-    },
-    {
-     "id": "cf-02",
-     "fecha": "2026-04-01",
-     "tipo": "minado",
-     "objetivo": "Minado sostenido 10 horas.",
-     "duracion_horas": 10,
-     "resultado": "ok",
-     "nodos": 4,
-     "bloques": 580,
-     "metricas": {
-      "tiempo_bloque_promedio_s": 63,
-      "reorgs": 1
-     },
-     "incidencias": [],
-     "notas": ""
-    },
-    {
-     "id": "cf-03",
-     "fecha": "2026-04-13",
-     "tipo": "transacciones",
-     "objetivo": "Transacciones con mixin y recuperación de wallets.",
-     "duracion_horas": 8,
+     "fecha": "2026-08-04",
+     "tipo": "ensayo interno",
+     "objetivo": "Dry-run automatizado del guion de Fase 20 con los tres recorridos: trabajador, PM y oficina.",
      "resultado": "con_incidencias",
-     "nodos": 4,
-     "bloques": 430,
      "metricas": {
-      "tiempo_bloque_promedio_s": 64,
-      "reorgs": 2,
-      "transacciones": 740
+      "recorridos": 3,
+      "hallazgos": 4,
+      "p2": 2,
+      "p3": 2
      },
      "incidencias": [
-      "Wallet lento al recuperar desde semilla con más de 400 transacciones."
+      "El botón flotante '+' y el de 'Acciones' se superponen y tapan 'Confirmar SALIDA' del trabajador (P2).",
+      "Los flotantes del tema admin tapan el checkbox 'Convertir en extra facturable' del PM (P2)."
      ],
-     "notas": ""
-    },
-    {
-     "id": "cf-04",
-     "fecha": "2026-04-27",
-     "tipo": "carga",
-     "objetivo": "8 nodos, caídas provocadas y pico de transacciones.",
-     "duracion_horas": 14,
-     "resultado": "fallida",
-     "nodos": 8,
-     "bloques": 700,
-     "metricas": {
-      "tiempo_bloque_promedio_s": 71,
-      "reorgs": 6,
-      "transacciones": 3100
-     },
-     "incidencias": [
-      "El daemon consumió 6 GB de RAM y fue terminado por el sistema."
-     ],
-     "notas": "Repetida el 5 de mayo con resultado correcto."
-    },
-    {
-     "id": "cf-05",
-     "fecha": "2026-05-05",
-     "tipo": "carga",
-     "objetivo": "Repetición de la corrida de carga tras optimizar memoria.",
-     "duracion_horas": 14,
-     "resultado": "ok",
-     "nodos": 8,
-     "bloques": 715,
-     "metricas": {
-      "tiempo_bloque_promedio_s": 62,
-      "reorgs": 2,
-      "transacciones": 3200,
-      "ram_pico_mb": 1450
-     },
-     "incidencias": [],
-     "notas": ""
+     "notas": "Decisión: GO para la prueba real, condicionado a arreglar las dos superposiciones. Quedó diferido a la prueba real todo lo que necesita hardware: cámara, GPS, huella/Face ID, modo avión y lectura de recibo con IA."
     }
    ],
    "reportes_frio": [
     {
      "id": "rf-01",
-     "fecha": "2026-03-23",
-     "corrida": "cf-01",
-     "autor": "Dev 2",
-     "conclusion": "Arranque correcto.",
-     "hallazgos": []
-    },
-    {
-     "id": "rf-02",
-     "fecha": "2026-04-02",
-     "corrida": "cf-02",
-     "autor": "Dev 2",
-     "conclusion": "Dificultad estable para 60 s.",
+     "fecha": "2026-07-28",
+     "autor": "Claude",
+     "conclusion": "Auditoría de UX y navegabilidad sobre actividades. Ver docs/AUDITORIA-UX-NAVEGABILIDAD-ACTIVIDADES-2026-07-28.md.",
      "hallazgos": [
       {
        "id": "h-01",
-       "titulo": "Picos de dificultad al entrar hashrate nuevo",
+       "titulo": "El icono 'Campo' no muestra contador de pendientes para el rol OFFICE",
        "severidad": "baja",
-       "impacto": "Variación temporal del tiempo de bloque.",
-       "mejora_propuesta": "Suavizar la ventana de dificultad.",
+       "impacto": "OFFICE puede revisar pendientes pero no ve que los tiene.",
+       "mejora_propuesta": "Incluir OFFICE en el composer que calcula el badge de pendientes.",
+       "estado": "abierto",
+       "tarea": ""
+      }
+     ]
+    },
+    {
+     "id": "rf-02",
+     "fecha": "2026-07-28",
+     "autor": "Claude",
+     "conclusion": "Recomendaciones profesionales para el cierre v1: el código está fuerte; lo que impide el GO es un defecto de secuencia en el flujo del PM y que los recorridos humanos no se han ejecutado ni registrado.",
+     "hallazgos": [
+      {
+       "id": "h-02",
+       "titulo": "Doble aprobación del mismo extra: aprobar la actividad no aprueba el change order",
+       "severidad": "critica",
+       "impacto": "El PM introduce el mismo monto dos veces y el guion de prueba habría fallado en su checkpoint principal.",
+       "mejora_propuesta": "Revisar, corregir y aprobar el change order desde un solo formulario, que abra la factura con la línea prellenada.",
        "estado": "cerrado",
-       "tarea": "t-032"
+       "tarea": "t-062"
+      },
+      {
+       "id": "h-03",
+       "titulo": "'Probar IA' sólo prueba texto y acepta http:// sin cifrar",
+       "severidad": "alta",
+       "impacto": "Falso positivo: la prueba pasa y la visión falla en obra.",
+       "mejora_propuesta": "Sonda de visión en la prueba de IA y exigir HTTPS.",
+       "estado": "cerrado",
+       "tarea": ""
+      },
+      {
+       "id": "h-04",
+       "titulo": "Formularios largos densos sin bloques visuales",
+       "severidad": "media",
+       "impacto": "Fricción que la prueba de usabilidad anotará como P2/P3.",
+       "mejora_propuesta": "Aplicar el patrón de bloques ya existente a los 3-4 formularios más densos.",
+       "estado": "abierto",
+       "tarea": ""
+      },
+      {
+       "id": "h-05",
+       "titulo": "Restauración off-site sin automatizar y acta de cierre en blanco",
+       "severidad": "alta",
+       "impacto": "Bloquea firmar el GO de la v1.",
+       "mejora_propuesta": "Automatizar la copia off-site y levantar el acta tras la prueba real.",
+       "estado": "abierto",
+       "tarea": "t-074"
       }
      ]
     },
     {
      "id": "rf-03",
-     "fecha": "2026-04-14",
-     "corrida": "cf-03",
-     "autor": "E. Palomares",
-     "conclusion": "Aceptable con una mejora de rendimiento pendiente.",
+     "fecha": "2026-08-04",
+     "corrida": "cf-01",
+     "autor": "Claude",
+     "conclusion": "Los tres recorridos completan su columna vertebral sin ayuda. GO para la prueba real tras arreglar las dos superposiciones de botones flotantes.",
      "hallazgos": [
       {
-       "id": "h-02",
-       "titulo": "Recuperación de wallet lenta con historial grande",
+       "id": "h-06",
+       "titulo": "F20-01 · Los flotantes tapan 'Confirmar SALIDA' del trabajador",
        "severidad": "media",
-       "impacto": "Mala primera experiencia del usuario.",
-       "mejora_propuesta": "Escaneo por lotes y barra de progreso en simplewallet.",
+       "impacto": "Toca justo el botón de salida, que es lo que mide la prueba.",
+       "mejora_propuesta": "Dejar un solo botón flotante en esa esquina.",
        "estado": "cerrado",
-       "tarea": "t-032"
+       "tarea": "t-062"
+      },
+      {
+       "id": "h-07",
+       "titulo": "F20-02 · Los flotantes del tema admin tapan el checkbox de decisión del PM",
+       "severidad": "media",
+       "impacto": "Estorba sobre los CTA del final de las tarjetas.",
+       "mejora_propuesta": "Subir el z-order del contenido o reposicionar los flotantes.",
+       "estado": "cerrado",
+       "tarea": "t-062"
+      },
+      {
+       "id": "h-08",
+       "titulo": "F20-04 · Un borrador offline viejo puede adjuntar su foto a una actividad nueva con el mismo id",
+       "severidad": "baja",
+       "impacto": "Sólo ocurre en local por reseeds; en producción los ids no se reutilizan.",
+       "mejora_propuesta": "Incluir un sello de fecha en la clave del borrador.",
+       "estado": "abierto",
+       "tarea": ""
       }
      ]
     },
     {
      "id": "rf-04",
-     "fecha": "2026-04-28",
-     "corrida": "cf-04",
-     "autor": "Dev 2",
-     "conclusion": "Corrida fallida por consumo de memoria: bloquea el lanzamiento hasta corregirlo.",
+     "fecha": "2026-09-03",
+     "autor": "Auditoría de mercado EE. UU.",
+     "conclusion": "El núcleo es competitivo, pero falta la capa contractual y legal americana alrededor del dinero. Sin ella no se puede vender a subcontratistas comerciales en Texas.",
      "hallazgos": [
       {
-       "id": "h-03",
-       "titulo": "Fuga de memoria en el pool bajo carga alta",
+       "id": "h-10",
+       "titulo": "La nómina paga horas × tarifa plana, sin overtime 1.5× tras 40 h (FLSA)",
        "severidad": "critica",
-       "impacto": "El daemon muere con 3000+ transacciones en cola.",
-       "mejora_propuesta": "Limitar el tamaño del pool y liberar transacciones expiradas.",
-       "estado": "cerrado",
-       "tarea": "t-031"
-      },
-      {
-       "id": "h-04",
-       "titulo": "Sin métricas de memoria en el RPC",
-       "severidad": "media",
-       "impacto": "No se detecta el problema hasta que el proceso muere.",
-       "mejora_propuesta": "Exponer uso de memoria y tamaño de pool en el RPC de estado.",
-       "estado": "cerrado",
-       "tarea": "t-032"
-      }
-     ]
-    },
-    {
-     "id": "rf-05",
-     "fecha": "2026-05-06",
-     "corrida": "cf-05",
-     "autor": "Dev 2",
-     "conclusion": "Carga superada con 1.45 GB de RAM pico. Listo para congelar versión.",
-     "hallazgos": []
-    }
-   ],
-   "bitacora": [
-    {
-     "fecha": "2026-02-09",
-     "horas": 5,
-     "personas": 1,
-     "fase": "definicion",
-     "elaborado": [
-      "Ficha de producto y parámetros iniciales"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-02-12",
-     "horas": 6,
-     "personas": 1,
-     "fase": "definicion",
-     "elaborado": [
-      "Alcance, entregables y calendario"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-02-17",
-     "horas": 7,
-     "personas": 2,
-     "fase": "desarrollo",
-     "elaborado": [
-      "Fork del core y entorno de compilación"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-02-24",
-     "horas": 8,
-     "personas": 2,
-     "fase": "desarrollo",
-     "elaborado": [
-      "CryptoNoteConfig completo"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-03-02",
-     "horas": 8,
-     "personas": 2,
-     "fase": "desarrollo",
-     "elaborado": [
-      "Bloque génesis generado y verificado"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-03-11",
-     "horas": 8,
-     "personas": 2,
-     "fase": "desarrollo",
-     "elaborado": [
-      "Compilación en Linux, Windows y macOS"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-03-16",
-     "horas": 6,
-     "personas": 1,
-     "fase": "desarrollo",
-     "elaborado": [
-      "Seed nodes y checkpoints"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-03-22",
-     "horas": 6,
-     "personas": 2,
-     "fase": "corridas_frio",
-     "elaborado": [
-      "Corrida cf-01 y reporte rf-01"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-04-01",
-     "horas": 10,
-     "personas": 2,
-     "fase": "corridas_frio",
-     "elaborado": [
-      "Corrida cf-02 de minado"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-04-13",
-     "horas": 9,
-     "personas": 2,
-     "fase": "corridas_frio",
-     "elaborado": [
-      "Corrida cf-03 de transacciones"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-04-27",
-     "horas": 12,
-     "personas": 2,
-     "fase": "corridas_frio",
-     "elaborado": [
-      "Corrida cf-04 de carga (fallida)"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-05-04",
-     "horas": 8,
-     "personas": 2,
-     "fase": "estabilizacion",
-     "elaborado": [
-      "Corrección de la fuga de memoria del pool"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-05-05",
-     "horas": 12,
-     "personas": 2,
-     "fase": "corridas_frio",
-     "elaborado": [
-      "Corrida cf-05 de carga superada"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-05-20",
-     "horas": 8,
-     "personas": 2,
-     "fase": "estabilizacion",
-     "elaborado": [
-      "Cierre de hallazgos y mejoras aplicadas"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-02",
-     "horas": 5,
-     "personas": 1,
-     "fase": "estabilizacion",
-     "elaborado": [
-      "Versión 1.0.0 congelada y notas de versión"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-10",
-     "horas": 8,
-     "personas": 2,
-     "fase": "infraestructura",
-     "elaborado": [
-      "Seed nodes en producción y explorador de bloques"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-22",
-     "horas": 8,
-     "personas": 2,
-     "fase": "infraestructura",
-     "elaborado": [
-      "Pool de minado y binarios publicados"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-29",
-     "horas": 6,
-     "personas": 1,
-     "fase": "landing",
-     "elaborado": [
-      "Identidad visual y copy de la landing"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-07-06",
-     "horas": 7,
-     "personas": 1,
-     "fase": "landing",
-     "elaborado": [
-      "Landing publicada en auros.pay"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-07-20",
-     "horas": 8,
-     "personas": 1,
-     "fase": "genoma_marketing",
-     "elaborado": [
-      "Posicionamiento, audiencias y matriz de mensajes"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-07-27",
-     "horas": 6,
-     "personas": 1,
-     "fase": "publicacion",
-     "elaborado": [
-      "Anuncio de lanzamiento y notas de prensa"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-08-05",
-     "horas": 7,
-     "personas": 2,
-     "fase": "publicacion",
-     "elaborado": [
-      "Red pública abierta a mineros externos",
-      "Alta en directorios"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-08-12",
-     "horas": 5,
-     "personas": 1,
-     "fase": "venta",
-     "elaborado": [
-      "Oferta y precios definidos"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-08-25",
-     "horas": 3,
-     "personas": 1,
-     "fase": "venta",
-     "elaborado": [
-      "Alta en el OTC y envío de documentación KYC"
-     ],
-     "notas": "A la espera del proveedor."
-    }
-   ],
-   "riesgos": [
-    {
-     "id": "r-01",
-     "titulo": "La verificación KYC del OTC lleva 10 días parada",
-     "probabilidad": "alta",
-     "impacto": "alto",
-     "mitigacion": "Abrir alta en un segundo proveedor en paralelo.",
-     "estado": "abierto"
-    }
-   ],
-   "resultado_final": {
-    "landing_page": {
-     "estado": "hecho",
-     "url": "https://auros.pay",
-     "fecha": "2026-07-06",
-     "notas": "Publicada; falta conectar el formulario al CRM."
-    },
-    "genoma_marketing": {
-     "estado": "en_progreso",
-     "url": "docs/genoma-auros.md",
-     "fecha": null,
-     "notas": "Falta cerrar KPIs de referidos."
-    },
-    "publicacion": {
-     "estado": "hecho",
-     "url": "https://auros.pay/anuncio",
-     "fecha": "2026-08-05",
-     "notas": "Red pública estable con mineros externos."
-    },
-    "venta": {
-     "estado": "en_progreso",
-     "fecha_primera_venta": null,
-     "unidades_vendidas": 0,
-     "ingresos": 0,
-     "moneda": "USD",
-     "notas": "Bloqueada por el medio de cobro."
-    }
-   }
-  },
-  {
-   "id": "konopy-coin",
-   "nombre": "Konopy Coin",
-   "ticker": "KNP",
-   "descripcion": "Moneda CryptoNote propia derivada del core de este repositorio, pensada como producto insignia de la plataforma.",
-   "estado": "en_pruebas",
-   "responsable": "E. Palomares",
-   "equipo": [
-    "E. Palomares",
-    "Dev 2",
-    "Marketing"
-   ],
-   "repositorio": "https://github.com/konopy/cryptonote",
-   "fecha_inicio": "2026-06-01",
-   "fecha_objetivo": "2026-10-15",
-   "fecha_fin": null,
-   "estimacion_inicial_dias": 55,
-   "estimaciones": [
-    {
-     "fecha": "2026-06-01",
-     "dias_restantes": 55,
-     "nota": "Estimación inicial: 55 días de trabajo efectivo."
-    },
-    {
-     "fecha": "2026-07-06",
-     "dias_restantes": 40,
-     "nota": "Revisión tras terminar el core: el génesis costó más de lo previsto."
-    },
-    {
-     "fecha": "2026-08-24",
-     "dias_restantes": 26,
-     "nota": "Revisión tras la tercera corrida en frío: quedan hallazgos altos abiertos y toda la parte comercial."
-    }
-   ],
-   "parametros_moneda": {
-    "emision_total": "18446744073709551615 unidades atómicas",
-    "block_target_segundos": 120,
-    "block_reward": "emisión decreciente estilo CryptoNote",
-    "prefijo_direcciones": "KNP",
-    "puerto_p2p": 19800,
-    "puerto_rpc": 19801
-   },
-   "tareas": [
-    {
-     "id": "t-001",
-     "titulo": "Ficha de producto de Konopy Coin",
-     "fase": "definicion",
-     "requisito": "definicion.ficha",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-06-03",
-     "notas": ""
-    },
-    {
-     "id": "t-002",
-     "titulo": "Definir parámetros de emisión, dificultad y puertos",
-     "fase": "definicion",
-     "requisito": "definicion.parametros",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 2,
-     "vence": "2026-06-05",
-     "notas": ""
-    },
-    {
-     "id": "t-003",
-     "titulo": "Cerrar alcance y lista de entregables",
-     "fase": "definicion",
-     "requisito": "definicion.alcance",
-     "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-06-05",
-     "notas": ""
-    },
-    {
-     "id": "t-004",
-     "titulo": "Calendario y estimación inicial",
-     "fase": "definicion",
-     "requisito": "definicion.calendario",
-     "estado": "hecha",
-     "prioridad": "media",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-06-06",
-     "notas": ""
-    },
-    {
-     "id": "t-010",
-     "titulo": "Fork del core y repositorio propio",
-     "fase": "desarrollo",
-     "requisito": "desarrollo.fork",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 1,
-     "vence": "2026-06-09",
-     "notas": ""
-    },
-    {
-     "id": "t-011",
-     "titulo": "Ajustar src/CryptoNoteConfig.h con los parámetros de la ficha",
-     "fase": "desarrollo",
-     "requisito": "desarrollo.config",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 3,
-     "vence": "2026-06-18",
-     "notas": ""
-    },
-    {
-     "id": "t-012",
-     "titulo": "Generar y fijar el bloque génesis",
-     "fase": "desarrollo",
-     "requisito": "desarrollo.genesis",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-06-25",
-     "notas": "Costó 6 días reales por el hex del génesis."
-    },
-    {
-     "id": "t-013",
-     "titulo": "Compilación limpia en Linux y Windows",
-     "fase": "desarrollo",
-     "requisito": "desarrollo.compilacion",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 4,
-     "vence": "2026-07-03",
-     "notas": "Windows pendiente de firmar binarios."
-    },
-    {
-     "id": "t-014",
-     "titulo": "Definir seed nodes y checkpoints iniciales",
-     "fase": "desarrollo",
-     "requisito": "desarrollo.checkpoints",
-     "estado": "en_progreso",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-09-05",
-     "notas": "Falta el segundo seed node; sólo está 192.168.1.81 del laboratorio."
-    },
-    {
-     "id": "t-020",
-     "titulo": "Escribir el plan de corridas en frío",
-     "fase": "corridas_frio",
-     "requisito": "corridas_frio.plan",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-07-10",
-     "notas": ""
-    },
-    {
-     "id": "t-021",
-     "titulo": "Corrida de arranque de red desde bloque 0",
-     "fase": "corridas_frio",
-     "requisito": "corridas_frio.arranque",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 1,
-     "vence": "2026-07-14",
-     "notas": ""
-    },
-    {
-     "id": "t-022",
-     "titulo": "Corrida de minado sostenido y ajuste de dificultad",
-     "fase": "corridas_frio",
-     "requisito": "corridas_frio.minado",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-08-05",
-     "notas": ""
-    },
-    {
-     "id": "t-023",
-     "titulo": "Corrida de transacciones, mixin y recuperación de wallets",
-     "fase": "corridas_frio",
-     "requisito": "corridas_frio.transacciones",
-     "estado": "en_progreso",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 3,
-     "vence": "2026-09-08",
-     "notas": "Repetir tras corregir el hallazgo h-03."
-    },
-    {
-     "id": "t-024",
-     "titulo": "Corrida de carga con 8 nodos y caídas provocadas",
-     "fase": "corridas_frio",
-     "requisito": "corridas_frio.carga",
-     "estado": "pendiente",
-     "prioridad": "media",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-09-18",
-     "notas": ""
-    },
-    {
-     "id": "t-030",
-     "titulo": "Reporte de frío de la corrida cf-03",
-     "fase": "estabilizacion",
-     "requisito": "estabilizacion.reportes",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-08-25",
-     "notas": ""
-    },
-    {
-     "id": "t-031",
-     "titulo": "Cerrar hallazgos críticos y altos abiertos",
-     "fase": "estabilizacion",
-     "requisito": "estabilizacion.hallazgos",
-     "estado": "bloqueada",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 4,
-     "vence": "2026-09-10",
-     "notas": "Bloqueada: falta hardware para reproducir el reorg del hallazgo h-03."
-    },
-    {
-     "id": "t-032",
-     "titulo": "Aplicar y re-probar las mejoras aceptadas",
-     "fase": "estabilizacion",
-     "requisito": "estabilizacion.mejoras",
-     "estado": "pendiente",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 3,
-     "vence": "2026-09-20",
-     "notas": ""
-    },
-    {
-     "id": "t-033",
-     "titulo": "Congelar versión candidata y notas de versión",
-     "fase": "estabilizacion",
-     "requisito": "estabilizacion.congelado",
-     "estado": "pendiente",
-     "prioridad": "media",
-     "responsable": "Dev 2",
-     "estimacion_dias": 1,
-     "vence": "2026-09-25",
-     "notas": ""
-    },
-    {
-     "id": "t-040",
-     "titulo": "Montar dos seed nodes en producción",
-     "fase": "infraestructura",
-     "requisito": "infraestructura.nodos",
-     "estado": "pendiente",
-     "prioridad": "alta",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-09-28",
-     "notas": ""
-    },
-    {
-     "id": "t-041",
-     "titulo": "Desplegar el explorador de bloques",
-     "fase": "infraestructura",
-     "requisito": "infraestructura.explorador",
-     "estado": "pendiente",
-     "prioridad": "media",
-     "responsable": "Dev 2",
-     "estimacion_dias": 2,
-     "vence": "2026-10-02",
-     "notas": ""
-    },
-    {
-     "id": "t-042",
-     "titulo": "Publicar binarios y guía de instalación",
-     "fase": "infraestructura",
-     "requisito": "infraestructura.binarios",
-     "estado": "pendiente",
-     "prioridad": "media",
-     "responsable": "Dev 2",
-     "estimacion_dias": 1,
-     "vence": "2026-10-05",
-     "notas": ""
-    },
-    {
-     "id": "t-050",
-     "titulo": "Identidad visual de Konopy Coin",
-     "fase": "landing",
-     "requisito": "landing.identidad",
-     "estado": "en_progreso",
-     "prioridad": "media",
-     "responsable": "Marketing",
-     "estimacion_dias": 3,
-     "vence": "2026-09-12",
-     "notas": "Logo en revisión."
-    },
-    {
-     "id": "t-051",
-     "titulo": "Copy y propuesta de valor de la landing",
-     "fase": "landing",
-     "requisito": "landing.copy",
-     "estado": "pendiente",
-     "prioridad": "media",
-     "responsable": "Marketing",
-     "estimacion_dias": 2,
-     "vence": "2026-09-22",
-     "notas": ""
-    }
-   ],
-   "corridas_frio": [
-    {
-     "id": "cf-01",
-     "fecha": "2026-07-13",
-     "tipo": "arranque",
-     "objetivo": "Levantar la red desde el bloque 0 con 3 nodos aislados y verificar sincronización.",
-     "duracion_horas": 5,
-     "resultado": "ok",
-     "nodos": 3,
-     "bloques": 214,
-     "metricas": {
-      "tiempo_bloque_promedio_s": 118,
-      "reorgs": 0,
-      "peers_estables": 3
-     },
-     "incidencias": [],
-     "notas": "Arranque limpio. El génesis quedó validado."
-    },
-    {
-     "id": "cf-02",
-     "fecha": "2026-08-03",
-     "tipo": "minado",
-     "objetivo": "Minado sostenido 12 horas para observar el ajuste de dificultad y la emisión real.",
-     "duracion_horas": 12,
-     "resultado": "con_incidencias",
-     "nodos": 4,
-     "bloques": 361,
-     "metricas": {
-      "tiempo_bloque_promedio_s": 143,
-      "reorgs": 2,
-      "peers_estables": 4
-     },
-     "incidencias": [
-      "El tiempo de bloque se desvía un 19% del objetivo tras subidas bruscas de hashrate.",
-      "Un nodo se quedó atrás 40 bloques y tardó 11 minutos en resincronizar."
-     ],
-     "notas": "La ventana de dificultad hereda valores del core original y no encaja con un block target de 120 s."
-    },
-    {
-     "id": "cf-03",
-     "fecha": "2026-08-21",
-     "tipo": "transacciones",
-     "objetivo": "Envíos con mixin 4, transacciones concurrentes y recuperación de wallet desde semilla.",
-     "duracion_horas": 9,
-     "resultado": "fallida",
-     "nodos": 5,
-     "bloques": 288,
-     "metricas": {
-      "tiempo_bloque_promedio_s": 126,
-      "reorgs": 4,
-      "transacciones": 512,
-      "transacciones_perdidas": 7
-     },
-     "incidencias": [
-      "7 transacciones desaparecieron del pool tras un reorg de 3 bloques.",
-      "simplewallet mostró saldo incorrecto hasta reiniciar el daemon."
-     ],
-     "notas": "Corrida detenida antes de tiempo. Hay que repetirla completa después de corregir."
-    }
-   ],
-   "reportes_frio": [
-    {
-     "id": "rf-01",
-     "fecha": "2026-07-14",
-     "corrida": "cf-01",
-     "autor": "E. Palomares",
-     "conclusion": "Arranque validado. Se puede pasar a corridas de minado.",
-     "hallazgos": [
-      {
-       "id": "h-01",
-       "titulo": "Los logs del daemon no marcan la hora con zona horaria",
-       "severidad": "baja",
-       "impacto": "Dificulta correlacionar eventos entre nodos durante las corridas.",
-       "mejora_propuesta": "Añadir timestamp ISO-8601 con zona en el logger del daemon.",
-       "estado": "cerrado",
-       "tarea": ""
-      }
-     ]
-    },
-    {
-     "id": "rf-02",
-     "fecha": "2026-08-04",
-     "corrida": "cf-02",
-     "autor": "Dev 2",
-     "conclusion": "El algoritmo de dificultad necesita reajuste antes de cualquier red pública.",
-     "hallazgos": [
-      {
-       "id": "h-02",
-       "titulo": "Ventana de dificultad heredada no encaja con block target de 120 s",
-       "severidad": "alta",
-       "impacto": "Tiempos de bloque inestables y emisión distinta a la publicada en la ficha.",
-       "mejora_propuesta": "Recalcular DIFFICULTY_WINDOW y DIFFICULTY_CUT para 120 s y re-correr la corrida de minado.",
+       "impacto": "Riesgo legal activo, y el propio sistema documenta la infracción con selfie y GPS.",
+       "mejora_propuesta": "Calcular el excedente semanal a 1.5× y desglosarlo en la nómina y el cheque.",
        "estado": "en_progreso",
-       "tarea": "t-031"
+       "tarea": "t-020"
       },
       {
-       "id": "h-04",
-       "titulo": "Resincronización lenta de nodos rezagados",
-       "severidad": "media",
-       "impacto": "Un nodo tarda más de 10 minutos en volver a la cadena tras desconectarse.",
-       "mejora_propuesta": "Subir el tamaño de lote de bloques en la sincronización y añadir métrica de retraso al RPC.",
-       "estado": "abierto",
-       "tarea": ""
-      }
-     ]
-    },
-    {
-     "id": "rf-03",
-     "fecha": "2026-08-24",
-     "corrida": "cf-03",
-     "autor": "E. Palomares",
-     "conclusion": "Corrida fallida. No se avanza a infraestructura pública hasta cerrar h-03.",
-     "hallazgos": [
-      {
-       "id": "h-03",
-       "titulo": "Transacciones perdidas del pool tras un reorg",
-       "severidad": "critica",
-       "impacto": "Pérdida de transacciones confirmadas ante los usuarios: bloquea cualquier lanzamiento.",
-       "mejora_propuesta": "Reinyectar al pool las transacciones de los bloques huérfanos y cubrirlo con una prueba automatizada de reorg.",
-       "estado": "abierto",
-       "tarea": "t-031"
-      },
-      {
-       "id": "h-05",
-       "titulo": "simplewallet no refresca el saldo tras un reorg",
+       "id": "h-11",
+       "titulo": "No existen pay applications (AIA G702/G703) ni retainage",
        "severidad": "alta",
-       "impacto": "El usuario ve un saldo que no existe hasta reiniciar.",
-       "mejora_propuesta": "Invalidar la caché del wallet al detectar cambio de cadena y forzar refresco.",
+       "impacto": "Así se factura la construcción comercial en EE. UU.; el módulo actual es residencial.",
+       "mejora_propuesta": "Módulo de retainage y pay application sobre el flujo de facturas existente.",
        "estado": "abierto",
-       "tarea": "t-031"
+       "tarea": "t-032"
       },
       {
-       "id": "h-06",
-       "titulo": "Sin prueba automatizada que cubra reorgs",
-       "severidad": "media",
-       "impacto": "Los errores de reorg sólo se detectan a mano en corridas largas.",
-       "mejora_propuesta": "Añadir un test de integración en tests/ que provoque un reorg de 3 bloques.",
+       "id": "h-12",
+       "titulo": "No hay lien waivers de Texas",
+       "severidad": "alta",
+       "impacto": "El intercambio cobro↔waiver es ritual de cada pago; sin él no se cobra.",
+       "mejora_propuesta": "Generar y firmar los waivers junto al cobro.",
        "estado": "abierto",
-       "tarea": ""
+       "tarea": "t-021"
+      },
+      {
+       "id": "h-13",
+       "titulo": "Sin W-9 / 1099-NEC para subcontratistas ni rastreo de COI",
+       "severidad": "alta",
+       "impacto": "Obligación fiscal y de seguro sin cubrir.",
+       "mejora_propuesta": "Alta de subcontratista con W-9, emisión de 1099 y vencimiento del COI.",
+       "estado": "abierto",
+       "tarea": "t-033"
+      },
+      {
+       "id": "h-14",
+       "titulo": "Sin 2FA para ADMIN/OFFICE",
+       "severidad": "media",
+       "impacto": "Cuentas con acceso al dinero protegidas sólo por contraseña.",
+       "mejora_propuesta": "Segundo factor obligatorio para esos roles.",
+       "estado": "abierto",
+       "tarea": "t-034"
+      },
+      {
+       "id": "h-15",
+       "titulo": "Sin Términos ni Política de Privacidad publicados",
+       "severidad": "media",
+       "impacto": "No se puede vender software a una empresa sin términos.",
+       "mejora_propuesta": "Páginas legales bilingües servidas por la app y aceptación con sello de tiempo.",
+       "estado": "abierto",
+       "tarea": "t-036"
+      },
+      {
+       "id": "h-16",
+       "titulo": "El daily report no protege en un claim: faltan clima, headcount y delays",
+       "severidad": "media",
+       "impacto": "La evidencia de obra no sirve como defensa documental.",
+       "mejora_propuesta": "Añadir clima, headcount y retrasos al parte diario.",
+       "estado": "abierto",
+       "tarea": "t-024"
+      },
+      {
+       "id": "h-17",
+       "titulo": "Sin exportación total de los datos de una empresa",
+       "severidad": "baja",
+       "impacto": "Es requisito de confianza para un comprador empresarial.",
+       "mejora_propuesta": "Export completo por empresa bajo demanda.",
+       "estado": "abierto",
+       "tarea": "t-035"
       }
      ]
     }
    ],
    "bitacora": [
     {
-     "fecha": "2026-06-01",
-     "horas": 5,
-     "personas": 1,
-     "fase": "definicion",
-     "elaborado": [
-      "Ficha inicial del producto",
-      "Investigación de parámetros de monedas comparables"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-02",
-     "horas": 6,
-     "personas": 1,
-     "fase": "definicion",
-     "elaborado": [
-      "Parámetros de emisión y block target",
-      "Puertos P2P/RPC reservados"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-04",
-     "horas": 4,
-     "personas": 1,
-     "fase": "definicion",
-     "elaborado": [
-      "Alcance cerrado y lista de entregables"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-05",
-     "horas": 3,
-     "personas": 1,
-     "fase": "definicion",
-     "elaborado": [
-      "Calendario y estimación inicial de 55 días"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-09",
-     "horas": 6,
+     "fecha": "2026-06-15",
+     "horas": 9.0,
      "personas": 2,
      "fase": "desarrollo",
      "elaborado": [
-      "Fork del core y repositorio propio",
-      "Entorno de compilación en el servidor 192.168.1.81"
+      "feat: Fase 14 — geocerca de obra (fichaje en sitio) + aviso de jornada sin cerrar",
+      "feat: Fase 13 — puestos/cargos editables por empresa, asignables a trabajadores",
+      "feat: nav con iconos + tooltip + submenú Configuraciones del superusuario",
+      "fix: firma pública de contrato daba 500 (auth()->user() es null sin sesión)",
+      "feat: marca por empresa en PDF (encabezado + logo) y nombre de archivo por empresa",
+      "lo que cambiaste",
+      "FieldOps full codebase - server version with all fixes"
      ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-10",
-     "horas": 7,
-     "personas": 2,
-     "fase": "desarrollo",
-     "elaborado": [
-      "Primera pasada de CryptoNoteConfig.h"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-11",
-     "horas": 7,
-     "personas": 2,
-     "fase": "desarrollo",
-     "elaborado": [
-      "Prefijo de direcciones y nombres de la moneda en todo el código"
-     ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
      "fecha": "2026-06-16",
-     "horas": 6,
+     "horas": 9.0,
      "personas": 1,
      "fase": "desarrollo",
      "elaborado": [
-      "Ajuste de emisión y reward"
+      "chore: deploy.sh versionado (pull + composer + migrate --force + cachés)",
+      "chore: dejar de versionar .phpunit.result.cache (caché transitoria de tests)",
+      "feat: autocompletar cliente en el contrato + rellena la contraparte al elegir",
+      "test: recorrido del superusuario en empresa activa (aislamiento end-to-end)",
+      "feat: autocompletar también en PM (proyecto y wizard) + cliente del wizard",
+      "feat: autocompletar campos que apuntan a la BD (cliente) + endpoint de búsqueda",
+      "feat: change order editable + botón Facturar; guard de empresa activa (super)",
+      "fix: aislamiento multi-empresa — escribir en la empresa ACTIVA, no en la del usuario"
      ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-06-17",
+     "horas": 6.0,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: UX4 — panel accionable (\"requiere tu atención\") + migas de pan",
+      "feat: UX3 — formularios cortos (revelación progresiva)",
+      "feat: UX2 — proyecto como centro de mando con pestañas",
+      "feat: UX1 — búsqueda global ⌘K (paleta de comandos)"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
      "fecha": "2026-06-18",
-     "horas": 8,
-     "personas": 2,
+     "horas": 3.0,
+     "personas": 1,
      "fase": "desarrollo",
      "elaborado": [
-      "Generación del bloque génesis",
-      "Primer intento fallido de fijar el hex"
+      "feat: Novedades — modal automático estilo Chrome (al entrar tras una actualización)",
+      "feat: UX5 — \"Novedades\" (what's new) in-app, estilo Chrome"
      ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
      "fecha": "2026-06-19",
-     "horas": 8,
+     "horas": 9.0,
      "personas": 1,
      "fase": "desarrollo",
      "elaborado": [
-      "Génesis regenerado y validado en tres máquinas"
+      "feat: buscador global más claro — agrupado por tipo, por empresa, + órdenes de compra",
+      "feat: IA por empresa (BYO key, OpenAI o Anthropic) — Konopy no paga la IA de todos",
+      "feat: geocerca integrada en el sitio (app nativa) + IA avisa cuando no está configurada",
+      "docs: checklist para compilar/probar la app Android (Fase 18)",
+      "fix: hora local por empresa — las marcas se guardan en UTC y se muestran en su zona",
+      "feat: Fase 18 (servidor + scaffold) — API de fichaje automático por geocerca + app Capacitor",
+      "fix: Notifier setea company_id explícito (cron CLI) + bump guzzle (CVE-2026-55568)"
      ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-06-20",
+     "horas": 9.0,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: QR en /app para instalar la app escaneando desde otro teléfono",
+      "feat: descarga de la app Android desde el sitio (página pública /app)",
+      "fix: el botón '+' flotante también se muestra al superusuario sin empresa activa",
+      "ci: despliegue automático a producción por SSH (GitHub Actions) en push a main",
+      "docs(native): guía paso a paso para compilar e instalar el APK en Android",
+      "feat: Fase 18 — app nativa del fichaje (Capacitor) con geocerca en 2.º plano",
+      "feat: chat en facturas + navegación móvil con accesos + botón de creación único",
+      "feat: nombre de empresa en factura y change order (solo superusuario)"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-06-21",
+     "horas": 3.0,
+     "personas": 1,
+     "fase": "infraestructura",
+     "elaborado": [
+      "fix: deploy.sh ahora incluye npm ci + npm run build (Vite assets)",
+      "docs: agregar seccion build por terminal en INSTALL-ANDROID.md"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
      "fecha": "2026-06-23",
-     "horas": 5,
+     "horas": 9.0,
      "personas": 1,
      "fase": "desarrollo",
      "elaborado": [
-      "Limpieza de referencias al proyecto original"
+      "feat(fab): rediseño de botones flotantes según spec del usuario",
+      "fix(audit): pluralizar 'artículo', truncar enlace de trabajador + copiar, 'Encargado del proyecto'",
+      "fix: atajo ⇧⌘E del selector de empresa en JS plano (Alpine no matchea shift+letra)",
+      "feat: selector de empresa del superusuario (modal + atajo ⇧⌘E + auto-apertura)",
+      "fix: deploy.sh descarta cambios locales en public/build antes del git pull",
+      "fix: deploy sin compilar assets en el server (sirve public/build versionado)",
+      "feat: formulario de Configuración por empresa (IA + correo) + pulido de botones flotantes",
+      "chore: tooling del build (Tailwind v4 + assets recompilados) + docs de la app Android"
      ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
-     "fecha": "2026-06-25",
-     "horas": 7,
-     "personas": 2,
-     "fase": "desarrollo",
-     "elaborado": [
-      "Compilación limpia en Linux",
-      "Ajuste de CMakeLists para el nuevo nombre"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-06-30",
-     "horas": 6,
+     "fecha": "2026-06-24",
+     "horas": 9.0,
      "personas": 1,
      "fase": "desarrollo",
      "elaborado": [
-      "Compilación en Windows con Boost 1.84"
+      "feat(reportes): reporte de Change Orders + aging de facturas + estado vacío de gráfica (Tanda 8)",
+      "feat(trabajadores): teléfono/email, revocar+regenerar enlace, total de jornadas (Tanda 7)",
+      "feat(gasto-rapido): fecha visible, CTA configurar IA, recordar último proyecto (Tanda 6)",
+      "feat: color de identidad por empresa (tiñe el encabezado al operar como esa empresa)",
+      "feat(factura): confirmaciones de estado, zona de peligro, nota de CO, 'U'->'Unidad' (Tanda 5)",
+      "feat: encabezado crema con empresa activa + Panel clicable (Tanda 4)",
+      "feat(buscador): el superusuario busca en TODAS las empresas (no solo la activa)",
+      "feat(co): estado inicial al crear change order + reorganizar acciones"
      ],
-     "notas": "Dos días perdidos por dependencias."
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-01",
+     "horas": 3.0,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat(change-order): se marca 'Cobrado' automáticamente al pagar la factura enlazada",
+      "security: endurecimiento técnico + mapa de cumplimiento SOC 2 / ISO 27001"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
      "fecha": "2026-07-02",
-     "horas": 5,
+     "horas": 9.0,
      "personas": 1,
      "fase": "desarrollo",
      "elaborado": [
-      "Binarios de prueba para el equipo"
+      "feat: tablero operativo de proyectos por estado + tipo de pago DIARIO en nómina",
+      "feat(nómina): pago por PUESTO (rol) con herencia y override individual",
+      "fix(ux): alias /estimator → /estimador (typo común)",
+      "feat: Fase 19 — Estimador de planos (IA de visión → partidas → cotización)",
+      "feat(ux): índice global de Facturas (/facturas) + aterrizar en el Panel tras el login (mejoras P1)",
+      "docs: corrida en frío de navegabilidad — puntaje por tarea núcleo + mejoras priorizadas"
      ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-03",
+     "horas": 3.0,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat(estimador): abre PDF de planos en el navegador y elige hojas clave",
+      "feat: Tablero v2 (columnas personalizables + ficha con checklist) y hombres/horas en actividad"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-05",
+     "horas": 1.5,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat(actividad): total hombres × horas = horas-hombre (en vivo + en revisión y ficha)"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
      "fecha": "2026-07-06",
-     "horas": 4,
+     "horas": 1.5,
      "personas": 1,
      "fase": "desarrollo",
      "elaborado": [
-      "Revisión de estimación: quedan 40 días"
+      "feat(nómina): cuadrilla por nombre en actividades → pago semanal + preview antes de generar"
      ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-08",
+     "horas": 3.0,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat(presupuesto): firma electrónica del quote + botón Facturar al aceptar",
+      "feat(factura): cliente en la factura (elegir o CREAR al momento) + guardar línea como producto nuevo"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
      "fecha": "2026-07-09",
-     "horas": 5,
-     "personas": 1,
-     "fase": "corridas_frio",
-     "elaborado": [
-      "Plan de corridas en frío con 5 escenarios"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-07-13",
-     "horas": 8,
-     "personas": 2,
-     "fase": "corridas_frio",
-     "elaborado": [
-      "Corrida cf-01 de arranque de red",
-      "214 bloques minados en laboratorio"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-07-14",
-     "horas": 4,
-     "personas": 1,
-     "fase": "estabilizacion",
-     "elaborado": [
-      "Reporte de frío rf-01"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-07-21",
-     "horas": 6,
+     "horas": 1.5,
      "personas": 1,
      "fase": "desarrollo",
      "elaborado": [
-      "Timestamps con zona horaria en el logger (hallazgo h-01)"
+      "fix(IA): mostrar la causa real del fallo + botón Probar IA; feat(actividad): material/precio/recibo/facturar y edición del PM"
      ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
-     "fecha": "2026-08-03",
-     "horas": 10,
-     "personas": 2,
-     "fase": "corridas_frio",
+     "fecha": "2026-07-10",
+     "horas": 9.0,
+     "personas": 1,
+     "fase": "desarrollo",
      "elaborado": [
-      "Corrida cf-02 de minado de 12 horas"
+      "feat(actividad): el DESPUÉS cierra la actividad + horas al cerrar + control antes/después vs horas reportadas",
+      "feat(actividad): agregar fotos del DESPUÉS a actividades de DÍAS ANTERIORES",
+      "feat(geocerca): la SALIDA también exige geolocalización (como la entrada)",
+      "feat(puestos): 'Líder de cuadrilla (foreman)' — el reporte del equipo es solo suyo",
+      "fix(actividad): 'Horas de la actividad' rechazaba valores enteros (5 → 'válidos 4.6 y 5.1')",
+      "feat(actividad): bloque 'Tiempo de la actividad' desvinculado de precios (solo registro + nómina)",
+      "fix(worker): cargar Alpine en el layout del trabajador — chips de cuadrilla y contador vivos",
+      "feat(actividad): puesto en la cuadrilla, sin 'facturar' para el worker, precio=material, fotos ANTES/DESPUÉS"
      ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-13",
+     "horas": 1.5,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat(bids): plantilla .xlsx descargable para el importador de estimados"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-15",
+     "horas": 1.5,
+     "personas": 1,
+     "fase": "infraestructura",
+     "elaborado": [
+      "feat(navegabilidad): P2+P3 aplicadas — factura en 3 clics, aceptar+convertir en 1, breadcrumbs completos; DEPLOY.md actualizado"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-16",
+     "horas": 1.5,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "fix(facturas): el cliente se hereda del proyecto en vez de preguntarlo"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-23",
+     "horas": 9.0,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: complete field change-order flow and worker passkeys",
+      "fix(qa): ISSUE-002 — corrige JSON de productos IA",
+      "fix(qa): ISSUE-001 — precarga cuadrilla clocked-in",
+      "polish(ux): tap targets de 44px + aviso de tamaño en el estimador",
+      "feat: páginas de error branded + endurecimiento (traversal, índices, scoping, throttle)",
+      "perf+fix: N+1 en dashboard/reportes/finanzas, badge móvil, scoping de FKs y flash global",
+      "feat(ui): estandariza profundidad de formularios",
+      "feat(ux): aplica navegación por rol y jornada configurable"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-24",
+     "horas": 9.0,
+     "personas": 2,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: idempotencia en compra, meta e inventario del trabajador",
+      "fix: normalize HTTP headers in production smoke",
+      "fix: prepare runtime directories in CI",
+      "feat: monitor production health after deploy",
+      "ci: puerta de calidad antes del deploy (tests PHP + JS + build)",
+      "fix: serve PWA manifest with standard MIME",
+      "fix: authenticate VPS repository sync",
+      "docs: prepare phase 20 production validation"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-25",
+     "horas": 1.5,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "Merge pull request #5 from konopy/claude/idempotencia-endpoints-worker"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-28",
+     "horas": 9.0,
+     "personas": 2,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: show open shift status on workers",
+      "feat: autocomplete invoice lines from products",
+      "fix: match worker quick action icon",
+      "feat: add worker quick action menu",
+      "feat: create activity suggestions from search",
+      "feat: autocomplete worker activity reports",
+      "feat: create inventory items from product photos",
+      "feat: select catalog products in worker activity"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-29",
+     "horas": 9.0,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: polish superadmin management screens",
+      "feat: polish bid and contract workflows",
+      "feat: polish project board and quick ficha",
+      "feat: polish settings roles and document sending",
+      "feat: polish finance payroll and notification screens",
+      "fix: redirect english product import url",
+      "feat: polish detail and reporting screens",
+      "feat: polish master data forms"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-07-30",
+     "horas": 7.5,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: trace change order invoice lines to field reports",
+      "feat: bill change orders as invoice lines",
+      "fix: render redesigned lists from collections",
+      "feat: polish auth and profile screens",
+      "feat: polish bid and contract forms"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
      "fecha": "2026-08-04",
-     "horas": 5,
-     "personas": 1,
-     "fase": "estabilizacion",
-     "elaborado": [
-      "Reporte de frío rf-02",
-      "Hallazgos h-02 y h-04 documentados"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-08-11",
-     "horas": 7,
-     "personas": 1,
-     "fase": "estabilizacion",
-     "elaborado": [
-      "Primer intento de recálculo de la ventana de dificultad"
-     ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-08-21",
-     "horas": 9,
+     "horas": 9.0,
      "personas": 2,
-     "fase": "corridas_frio",
+     "fase": "desarrollo",
      "elaborado": [
-      "Corrida cf-03 de transacciones",
-      "Detección de pérdida de transacciones en reorg"
+      "docs: estudio competitivo del mercado field-ops (ago-2026)",
+      "feat: resolve notifications to source records",
+      "feat: add management decision links to dashboard",
+      "feat: make project analytics actionable",
+      "feat: link management reports to source records",
+      "chore: recompilar assets (pb-48/pb-44 de los arreglos de flotantes)",
+      "fix: app 100% bilingüe (892 traducciones EN) + flotantes no tapan formularios",
+      "docs: resultados del dry-run F20 (ensayo de usabilidad local)"
      ],
-     "notas": "Corrida detenida antes de tiempo."
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-05",
+     "horas": 9.0,
+     "personas": 2,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: add quick previews to sales lists",
+      "feat: preview invoice line items in lists",
+      "feat: make weekly payroll review actionable",
+      "fix: ancla #goal-{id} al loop de metas (estaba en el loop de COs)",
+      "Merge remote-tracking branch 'origin/main' into codex/linkable-management-reports",
+      "Merge remote-tracking branch 'origin/main' into codex/project-health-status"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-06",
+     "horas": 9.0,
+     "personas": 2,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: auditoría de rutas por rol (guardia anti-500) + 5 manuales de usuario",
+      "feat: create projects from quick expenses",
+      "feat: reduce friction in quick entry flows",
+      "feat: streamline project and invoice setup"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-07",
+     "horas": 1.5,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "fix: open PDFs reliably in app"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-10",
+     "horas": 4.5,
+     "personas": 2,
+     "fase": "desarrollo",
+     "elaborado": [
+      "chore: recompilar assets de los fixes",
+      "fix: allow long invoice item descriptions"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-13",
+     "horas": 1.5,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: polish mobile quote lines and document sharing"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-15",
+     "horas": 1.5,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: clarify project change order billing flow"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-16",
+     "horas": 3.0,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: add sticky invoice summary bar",
+      "feat: add unbilled receipts to invoice flow"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-17",
+     "horas": 6.0,
+     "personas": 2,
+     "fase": "desarrollo",
+     "elaborado": [
+      "fix: prevent mobile floaters overlapping invoice summary",
+      "chore: recompilar assets del relevo"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-18",
+     "horas": 6.0,
+     "personas": 2,
+     "fase": "desarrollo",
+     "elaborado": [
+      "fix: traducciones EN del visor de PDF en app (guardia de cobertura)",
+      "fix: add app-safe invoice pdf viewer",
+      "feat: improve mobile form ergonomics"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-22",
+     "horas": 9.0,
+     "personas": 2,
+     "fase": "desarrollo",
+     "elaborado": [
+      "docs: kit completo de marketing de Konopy FieldOps (bilingüe EN/ES)",
+      "chore: recompilar assets del relevo",
+      "feat: clarify worker pay inherited from positions",
+      "fix: show newest invoices first",
+      "feat: add monthly project billing closeout",
+      "feat: add project reading and invoice line review"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-23",
+     "horas": 4.5,
+     "personas": 2,
+     "fase": "desarrollo",
+     "elaborado": [
+      "chore: recompilar assets del relevo",
+      "feat: add monthly activity review pdf"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
      "fecha": "2026-08-24",
-     "horas": 6,
-     "personas": 1,
-     "fase": "estabilizacion",
+     "horas": 9.0,
+     "personas": 2,
+     "fase": "desarrollo",
      "elaborado": [
-      "Reporte de frío rf-03",
-      "Revisión de estimación: quedan 26 días"
+      "feat: add subcontractor payment flow from paid invoices",
+      "feat: show dates on invoice billable selections",
+      "fix: stabilize monthly activity pdf export",
+      "chore: recompilar assets del relevo",
+      "fix: informe EN resiliente — restaura idioma con finally y degrada sin columnas _en",
+      "feat: generate activity reports in english",
+      "fix: open activity review pdf in app",
+      "feat: include activity photo thumbnails in monthly pdf"
      ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-26",
+     "horas": 1.5,
+     "personas": 1,
+     "fase": "desarrollo",
+     "elaborado": [
+      "feat: protect invoice and quote edits with local drafts"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
+    },
+    {
+     "fecha": "2026-08-27",
+     "horas": 7.5,
+     "personas": 2,
+     "fase": "desarrollo",
+     "elaborado": [
+      "chore: recompilar assets tras el revert",
+      "Revert \"feat: sitio público de Blossom Exteriors con leads hacia GoHighLevel\"",
+      "feat: sitio público de Blossom Exteriors con leads hacia GoHighLevel"
+     ],
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
      "fecha": "2026-08-28",
-     "horas": 5,
-     "personas": 1,
-     "fase": "estabilizacion",
+     "horas": 6.0,
+     "personas": 2,
+     "fase": "desarrollo",
      "elaborado": [
-      "Reproducción parcial del reorg en laboratorio"
+      "feat: reenvío automático de reportes en cola + Probar IA con sonda de visión",
+      "feat: libro de banco operativo (entradas/salidas pagadas con saldo corrido)"
      ],
-     "notas": "Falta hardware para el escenario completo."
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     },
     {
-     "fecha": "2026-09-01",
-     "horas": 4,
-     "personas": 1,
-     "fase": "landing",
+     "fecha": "2026-09-03",
+     "horas": 3.0,
+     "personas": 2,
+     "fase": "genoma_marketing",
      "elaborado": [
-      "Primeras propuestas de logo e identidad"
+      "feat: overtime FLSA 1.5x en nómina + plan maestro mercado EE. UU."
      ],
-     "notas": ""
+     "notas": "Días y trabajo tomados del historial de git; las horas son una estimación por número de commits."
     }
    ],
    "riesgos": [
     {
      "id": "r-01",
-     "titulo": "El hallazgo crítico h-03 puede exigir cambios profundos en el pool de transacciones",
-     "probabilidad": "media",
+     "titulo": "La prueba de usabilidad con usuarios reales sigue sin ejecutarse y bloquea el cierre v1",
+     "probabilidad": "alta",
      "impacto": "alto",
-     "mitigacion": "Aislar el cambio y cubrirlo con prueba de reorg antes de tocar nada más.",
+     "mitigacion": "Sentar a un WORKER, un PM y una persona de OFFICE con el guion ya escrito y levantar el acta.",
      "estado": "abierto"
     },
     {
      "id": "r-02",
-     "titulo": "Toda la fase comercial (genoma, publicación, venta) sigue sin planificar",
+     "titulo": "Falta la capa contractual americana (pay app, retainage, lien waivers, W-9/COI)",
      "probabilidad": "alta",
      "impacto": "alto",
-     "mitigacion": "Arrancar el genoma de marketing en paralelo a la estabilización, no después.",
+     "mitigacion": "Ejecutar el plan de mercado EE. UU. en el orden acordado: C1 → X1 → X3 → C2.",
+     "estado": "abierto"
+    },
+    {
+     "id": "r-03",
+     "titulo": "Toda la fase comercial está sin planificar: no hay precio, ni medio de cobro, ni primera venta",
+     "probabilidad": "alta",
+     "impacto": "alto",
+     "mitigacion": "Definir oferta y precio antes de terminar el plan EE. UU., no después.",
+     "estado": "abierto"
+    },
+    {
+     "id": "r-04",
+     "titulo": "El proyecto no tiene fecha objetivo declarada",
+     "probabilidad": "alta",
+     "impacto": "medio",
+     "mitigacion": "Fijar fecha de cierre v1 y de las tareas del plan (t-004).",
      "estado": "abierto"
     }
    ],
@@ -2026,19 +1638,19 @@ window.PD_DATA = {
      "estado": "en_progreso",
      "url": "",
      "fecha": null,
-     "notas": "Identidad visual en revisión; copy sin empezar."
+     "notas": "La landing está redactada (docs/marketing/landing-konopy-fieldops.html) pero no publicada: el plan la deja para el final."
     },
     "genoma_marketing": {
-     "estado": "pendiente",
+     "estado": "en_progreso",
      "url": "",
      "fecha": null,
-     "notas": "Sin arrancar."
+     "notas": "Kit bilingüe completo: mensaje central, one-pager, anuncios sociales, guion de demo, secuencias GHL y plantilla de caso de éxito. Faltan KPIs, calendario y presupuesto."
     },
     "publicacion": {
      "estado": "pendiente",
-     "url": "",
+     "url": "https://ops.konopy.com",
      "fecha": null,
-     "notas": "Bloqueada por los hallazgos de frío abiertos."
+     "notas": "La aplicación corre en producción, pero no hay anuncio, ni presencia pública, ni alta abierta para usuarios que no sean del equipo."
     },
     "venta": {
      "estado": "pendiente",
@@ -2046,155 +1658,69 @@ window.PD_DATA = {
      "unidades_vendidas": 0,
      "ingresos": 0,
      "moneda": "USD",
-     "notas": ""
+     "notas": "Sin precio público por decisión de marca: se habla en la demo. No hay precio definido, ni medio de cobro, ni venta registrada."
     }
    }
   },
   {
-   "id": "terra-nodo",
-   "nombre": "Terra Nodo",
-   "ticker": "TRR",
-   "descripcion": "Moneda regional orientada a comercios locales. Proyecto recién arrancado.",
+   "id": "indigo",
+   "nombre": "Indigo",
+   "ticker": "",
+   "descripcion": "Proyecto de figuras 3D. Hoy el repositorio sólo tiene el README con la frase «3d figures»: no hay definición escrita, ni código, ni actividad desde el 25 de junio.",
    "estado": "planificado",
-   "responsable": "E. Palomares",
-   "equipo": [
-    "E. Palomares"
-   ],
-   "repositorio": "",
-   "fecha_inicio": "2026-08-17",
-   "fecha_objetivo": "2026-12-18",
+   "responsable": "Arthuro",
+   "equipo": [],
+   "repositorio": "https://github.com/konopy/indigo",
+   "fecha_inicio": "2026-06-24",
+   "fecha_objetivo": null,
    "fecha_fin": null,
-   "estimacion_inicial_dias": 50,
-   "estimaciones": [
-    {
-     "fecha": "2026-08-17",
-     "dias_restantes": 50,
-     "nota": "Estimación inicial, sin equipo asignado todavía."
-    }
-   ],
-   "parametros_moneda": {
-    "emision_total": "",
-    "block_target_segundos": 0,
-    "block_reward": "",
-    "prefijo_direcciones": "",
-    "puerto_p2p": 0,
-    "puerto_rpc": 0
-   },
+   "estimacion_inicial_dias": null,
+   "estimaciones": [],
    "tareas": [
     {
      "id": "t-001",
-     "titulo": "Ficha de producto de Terra Nodo",
+     "titulo": "Definir qué es Indigo: producto, alcance y público",
      "fase": "definicion",
      "requisito": "definicion.ficha",
-     "estado": "hecha",
-     "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-08-20",
-     "notas": ""
-    },
-    {
-     "id": "t-002",
-     "titulo": "Definir parámetros de la moneda",
-     "fase": "definicion",
-     "requisito": "definicion.parametros",
-     "estado": "en_progreso",
-     "prioridad": "alta",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 2,
-     "vence": "2026-08-31",
-     "notas": "Falta decidir emisión total y block target."
-    },
-    {
-     "id": "t-003",
-     "titulo": "Cerrar alcance y entregables",
-     "fase": "definicion",
-     "requisito": "definicion.alcance",
      "estado": "pendiente",
      "prioridad": "alta",
-     "responsable": "E. Palomares",
+     "responsable": "Arthuro",
      "estimacion_dias": 1,
-     "vence": "2026-09-04",
-     "notas": ""
-    },
-    {
-     "id": "t-004",
-     "titulo": "Calendario y estimación",
-     "fase": "definicion",
-     "requisito": "definicion.calendario",
-     "estado": "pendiente",
-     "prioridad": "media",
-     "responsable": "E. Palomares",
-     "estimacion_dias": 1,
-     "vence": "2026-09-08",
-     "notas": ""
-    },
-    {
-     "id": "t-010",
-     "titulo": "Fork del core para Terra Nodo",
-     "fase": "desarrollo",
-     "requisito": "desarrollo.fork",
-     "estado": "pendiente",
-     "prioridad": "alta",
-     "responsable": "",
-     "estimacion_dias": 1,
-     "vence": "2026-09-15",
-     "notas": "Sin responsable asignado."
-    },
-    {
-     "id": "t-011",
-     "titulo": "Ajustar CryptoNoteConfig.h",
-     "fase": "desarrollo",
-     "requisito": "desarrollo.config",
-     "estado": "pendiente",
-     "prioridad": "alta",
-     "responsable": "",
-     "estimacion_dias": 3,
-     "vence": "2026-09-25",
-     "notas": ""
+     "vence": "",
+     "notas": "Sin esto no se puede planificar nada más. Dime en dos líneas qué es Indigo y lo desarrollo entero en el dashboard."
     }
    ],
    "corridas_frio": [],
    "reportes_frio": [],
    "bitacora": [
     {
-     "fecha": "2026-08-17",
-     "horas": 4,
+     "fecha": "2026-06-24",
+     "horas": 1,
      "personas": 1,
      "fase": "definicion",
      "elaborado": [
-      "Idea de producto y primera ficha"
+      "Initial commit: creación del repositorio"
      ],
-     "notas": ""
+     "notas": "Tomado del historial de git; horas estimadas."
     },
     {
-     "fecha": "2026-08-19",
-     "horas": 3,
+     "fecha": "2026-06-25",
+     "horas": 1,
      "personas": 1,
      "fase": "definicion",
      "elaborado": [
-      "Investigación de comercios locales interesados"
+      "first commit: README con «3d figures»"
      ],
-     "notas": ""
-    },
-    {
-     "fecha": "2026-08-31",
-     "horas": 3,
-     "personas": 1,
-     "fase": "definicion",
-     "elaborado": [
-      "Borrador de parámetros de emisión"
-     ],
-     "notas": "Sin cerrar."
+     "notas": "Tomado del historial de git; horas estimadas."
     }
    ],
    "riesgos": [
     {
      "id": "r-01",
-     "titulo": "No hay desarrollador asignado",
+     "titulo": "Proyecto parado desde el 25 de junio y sin definición escrita",
      "probabilidad": "alta",
-     "impacto": "alto",
-     "mitigacion": "Reservar a Dev 2 en cuanto Konopy Coin congele versión.",
+     "impacto": "medio",
+     "mitigacion": "Escribir la ficha del proyecto o pausarlo formalmente para que no ensucie la cartera.",
      "estado": "abierto"
     }
    ],

@@ -1,9 +1,8 @@
 {
   "nombre": "Projets Dashboard",
-  "descripcion": "Panel de control de todos los proyectos de la plataforma CryptoNote.",
+  "descripcion": "Panel de control de los proyectos de Konopy.",
   "proyectos": [
-    "proyectos/auros-pay.json",
-    "proyectos/konopy-coin.json",
-    "proyectos/terra-nodo.json"
+    "proyectos/fieldops.json",
+    "proyectos/indigo.json"
   ]
 }

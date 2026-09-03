@@ -1,0 +1,65 @@
+{
+  "id": "indigo",
+  "nombre": "Indigo",
+  "ticker": "",
+  "descripcion": "Proyecto de figuras 3D. Hoy el repositorio sólo tiene el README con la frase «3d figures»: no hay definición escrita, ni código, ni actividad desde el 25 de junio.",
+  "estado": "planificado",
+  "responsable": "Arthuro",
+  "equipo": [],
+  "repositorio": "https://github.com/konopy/indigo",
+  "fecha_inicio": "2026-06-24",
+  "fecha_objetivo": null,
+  "fecha_fin": null,
+  "estimacion_inicial_dias": null,
+  "estimaciones": [],
+  "tareas": [
+    {
+      "id": "t-001",
+      "titulo": "Definir qué es Indigo: producto, alcance y público",
+      "fase": "definicion",
+      "requisito": "definicion.ficha",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "responsable": "Arthuro",
+      "estimacion_dias": 1,
+      "vence": "",
+      "notas": "Sin esto no se puede planificar nada más. Dime en dos líneas qué es Indigo y lo desarrollo entero en el dashboard."
+    }
+  ],
+  "corridas_frio": [],
+  "reportes_frio": [],
+  "bitacora": [
+    {
+      "fecha": "2026-06-24",
+      "horas": 1,
+      "personas": 1,
+      "fase": "definicion",
+      "elaborado": ["Initial commit: creación del repositorio"],
+      "notas": "Tomado del historial de git; horas estimadas."
+    },
+    {
+      "fecha": "2026-06-25",
+      "horas": 1,
+      "personas": 1,
+      "fase": "definicion",
+      "elaborado": ["first commit: README con «3d figures»"],
+      "notas": "Tomado del historial de git; horas estimadas."
+    }
+  ],
+  "riesgos": [
+    {
+      "id": "r-01",
+      "titulo": "Proyecto parado desde el 25 de junio y sin definición escrita",
+      "probabilidad": "alta",
+      "impacto": "medio",
+      "mitigacion": "Escribir la ficha del proyecto o pausarlo formalmente para que no ensucie la cartera.",
+      "estado": "abierto"
+    }
+  ],
+  "resultado_final": {
+    "landing_page": { "estado": "pendiente", "url": "", "fecha": null, "notas": "" },
+    "genoma_marketing": { "estado": "pendiente", "url": "", "fecha": null, "notas": "" },
+    "publicacion": { "estado": "pendiente", "url": "", "fecha": null, "notas": "" },
+    "venta": { "estado": "pendiente", "fecha_primera_venta": null, "unidades_vendidas": 0, "ingresos": 0, "moneda": "USD", "notas": "" }
+  }
+}
