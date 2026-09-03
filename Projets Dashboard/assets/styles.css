@@ -1,39 +1,63 @@
 /* Projets Dashboard - hoja de estilo unica, sin dependencias */
 
+/* Paleta: neutros con sesgo verde-azulado (la sala de maquinas), acento teal,
+   y color semantico aparte para correcto / aviso / peligro. Tres estados de tema:
+   :root = claro; prefers-color-scheme = tema del sistema; [data-theme] = eleccion explicita. */
+
 :root {
-  --fondo: #0e1117;
-  --fondo-2: #151b24;
-  --fondo-3: #1c2430;
-  --borde: #26313f;
-  --texto: #e6edf3;
-  --texto-2: #9aa8b8;
-  --texto-3: #6b7a8c;
-  --acento: #4c8dff;
-  --ok: #3fb950;
-  --aviso: #d29922;
-  --peligro: #f85149;
-  --critico: #ff6b6b;
-  --neutro: #6b7a8c;
+  --fondo: #f3f6f6;
+  --fondo-2: #ffffff;
+  --fondo-3: #e7eded;
+  --borde: #d2dcdb;
+  --texto: #12201f;
+  --texto-2: #4a5a58;
+  --texto-3: #7b8a88;
+  --acento: #0e7c7b;
+  --ok: #1f7a4d;
+  --aviso: #a2670c;
+  --peligro: #b3261e;
+  --critico: #8c1d18;
+  --neutro: #7b8a88;
   --radio: 10px;
-  --sombra: 0 1px 2px rgba(0, 0, 0, .4);
+  --sombra: 0 1px 2px rgba(18, 32, 31, .08);
+  --fuente: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --fuente-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --fondo: #f6f8fa;
-    --fondo-2: #ffffff;
-    --fondo-3: #eef2f6;
-    --borde: #d8dee4;
-    --texto: #1f2328;
-    --texto-2: #57606a;
-    --texto-3: #8c959f;
-    --acento: #0969da;
-    --ok: #1a7f37;
-    --aviso: #9a6700;
-    --peligro: #cf222e;
-    --critico: #a40e26;
-    --neutro: #6e7781;
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fondo: #0d1413;
+    --fondo-2: #131c1b;
+    --fondo-3: #1c2725;
+    --borde: #2b3937;
+    --texto: #e3ebe9;
+    --texto-2: #9aaba8;
+    --texto-3: #6c807d;
+    --acento: #35c9c0;
+    --ok: #46b877;
+    --aviso: #d99a2b;
+    --peligro: #ff6b5e;
+    --critico: #ff8a80;
+    --neutro: #6c807d;
+    --sombra: 0 1px 2px rgba(0, 0, 0, .45);
   }
+}
+
+:root[data-theme="dark"] {
+  --fondo: #0d1413;
+  --fondo-2: #131c1b;
+  --fondo-3: #1c2725;
+  --borde: #2b3937;
+  --texto: #e3ebe9;
+  --texto-2: #9aaba8;
+  --texto-3: #6c807d;
+  --acento: #35c9c0;
+  --ok: #46b877;
+  --aviso: #d99a2b;
+  --peligro: #ff6b5e;
+  --critico: #ff8a80;
+  --neutro: #6c807d;
+  --sombra: 0 1px 2px rgba(0, 0, 0, .45);
 }
 
 * { box-sizing: border-box; }
@@ -42,7 +66,8 @@ body {
   margin: 0;
   background: var(--fondo);
   color: var(--texto);
-  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font: 14px/1.55 var(--fuente);
+  -webkit-font-smoothing: antialiased;
 }
 
 a { color: var(--acento); }
@@ -67,7 +92,7 @@ a { color: var(--acento); }
 }
 
 .marca { display: flex; flex-direction: column; gap: 2px; }
-.marca strong { font-size: 16px; letter-spacing: .2px; }
+.marca strong { font-size: 15px; letter-spacing: .3px; font-weight: 600; }
 .marca span { color: var(--texto-3); font-size: 12px; }
 
 .lista-proyectos { display: flex; flex-direction: column; gap: 6px; }
@@ -91,7 +116,7 @@ a { color: var(--acento); }
 .item-proyecto.activo { background: var(--fondo-3); border-color: var(--acento); }
 .item-proyecto .fila { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .item-proyecto .nombre { font-weight: 600; }
-.item-proyecto .meta { font-size: 11px; color: var(--texto-3); }
+.item-proyecto .meta { font-size: 11px; color: var(--texto-3); font-family: var(--fuente-mono); }
 
 .barra { height: 5px; background: var(--fondo); border-radius: 99px; overflow: hidden; }
 .barra > i { display: block; height: 100%; background: var(--acento); }
@@ -111,20 +136,20 @@ a { color: var(--acento); }
 .contenido { flex: 1; padding: 22px 26px 60px; max-width: 1180px; }
 
 .cabecera { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; justify-content: space-between; margin-bottom: 18px; }
-.cabecera h1 { margin: 0 0 4px; font-size: 22px; }
+.cabecera h1 { margin: 0 0 4px; font-size: 23px; font-weight: 600; letter-spacing: -.3px; text-wrap: balance; }
 .cabecera p { margin: 0; color: var(--texto-2); max-width: 62ch; }
 
 .navegacion { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 20px; }
 .navegacion a {
-  font-size: 12px; text-decoration: none; color: var(--texto-2);
+  font-family: var(--fuente-mono); font-size: 11.5px; text-decoration: none; color: var(--texto-2);
   border: 1px solid var(--borde); border-radius: 99px; padding: 4px 11px; background: var(--fondo-2);
 }
 .navegacion a:hover { color: var(--texto); border-color: var(--acento); }
 
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 22px; }
 .kpi { background: var(--fondo-2); border: 1px solid var(--borde); border-radius: var(--radio); padding: 12px 13px; box-shadow: var(--sombra); }
-.kpi .valor { font-size: 21px; font-weight: 650; letter-spacing: -.3px; }
-.kpi .etiqueta { font-size: 11px; color: var(--texto-3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 3px; }
+.kpi .valor { font-size: 21px; font-weight: 600; letter-spacing: -.2px; font-variant-numeric: tabular-nums; }
+.kpi .etiqueta { font-family: var(--fuente-mono); font-size: 10.5px; color: var(--texto-3); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 4px; }
 .kpi .nota { font-size: 11px; color: var(--texto-2); margin-top: 3px; }
 .kpi.peligro .valor { color: var(--peligro); }
 .kpi.aviso .valor { color: var(--aviso); }
@@ -136,8 +161,8 @@ section.bloque > h2 {
   padding-bottom: 8px; border-bottom: 1px solid var(--borde);
 }
 section.bloque > h2 .num {
-  background: var(--fondo-3); color: var(--texto-2); border-radius: 6px;
-  font-size: 11px; padding: 2px 7px; font-weight: 600;
+  background: var(--fondo-3); color: var(--acento); border-radius: 6px;
+  font-family: var(--fuente-mono); font-size: 11px; padding: 2px 7px; font-weight: 600;
 }
 section.bloque > .sub { color: var(--texto-3); font-size: 12px; margin: 6px 0 12px; }
 
@@ -149,13 +174,13 @@ section.bloque > .sub { color: var(--texto-3); font-size: 12px; margin: 6px 0 12
 
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th, td { text-align: left; padding: 7px 9px; border-bottom: 1px solid var(--borde); vertical-align: top; }
-th { color: var(--texto-3); font-size: 11px; text-transform: uppercase; letter-spacing: .4px; font-weight: 600; }
+th { color: var(--texto-3); font-family: var(--fuente-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .5px; font-weight: 600; }
 tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: var(--fondo-3); }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 
 .etq {
-  display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 99px;
+  display: inline-block; font-family: var(--fuente-mono); font-size: 10.5px; padding: 1px 7px; border-radius: 99px;
   border: 1px solid var(--borde); color: var(--texto-2); white-space: nowrap;
 }
 .etq.ok { color: var(--ok); border-color: var(--ok); }
@@ -190,7 +215,7 @@ ul.requisitos li.hecho .nombre-req { color: var(--texto-2); }
 
 .linea-tiempo { list-style: none; margin: 0; padding: 0; }
 .linea-tiempo li { display: grid; grid-template-columns: 108px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--borde); }
-.linea-tiempo .fecha { color: var(--texto-2); font-variant-numeric: tabular-nums; font-size: 12px; }
+.linea-tiempo .fecha { color: var(--texto-2); font-family: var(--fuente-mono); font-size: 11.5px; }
 .linea-tiempo .fecha small { display: block; color: var(--texto-3); }
 .linea-tiempo ul { margin: 3px 0 0; padding-left: 17px; color: var(--texto-2); }
 .linea-tiempo .nota { color: var(--texto-3); font-size: 12px; font-style: italic; }
@@ -211,6 +236,10 @@ ul.requisitos li.hecho .nombre-req { color: var(--texto-2); }
   .app { flex-direction: column; }
   .lateral { width: auto; flex: none; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--borde); }
   .contenido { padding: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
 
 @media print {
