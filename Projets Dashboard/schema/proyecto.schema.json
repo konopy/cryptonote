@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://konopy.local/projets-dashboard/proyecto.schema.json",
+  "title": "Proyecto de Projets Dashboard",
+  "type": "object",
+  "required": ["id", "nombre", "estado", "fecha_inicio"],
+  "additionalProperties": true,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "nombre": { "type": "string", "minLength": 1 },
+    "ticker": { "type": "string" },
+    "descripcion": { "type": "string" },
+    "estado": {
+      "enum": ["planificado", "en_desarrollo", "en_pruebas", "en_lanzamiento", "en_venta", "terminado", "pausado"]
+    },
+    "responsable": { "type": "string" },
+    "equipo": { "type": "array", "items": { "type": "string" } },
+    "repositorio": { "type": "string" },
+    "fecha_inicio": { "$ref": "#/definitions/fecha" },
+    "fecha_objetivo": { "$ref": "#/definitions/fechaOpcional" },
+    "fecha_fin": { "$ref": "#/definitions/fechaOpcional" },
+    "estimacion_inicial_dias": { "type": ["number", "null"], "minimum": 0 },
+    "estimaciones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fecha", "dias_restantes"],
+        "properties": {
+          "fecha": { "$ref": "#/definitions/fecha" },
+          "dias_restantes": { "type": "number", "minimum": 0 },
+          "nota": { "type": "string" }
+        }
+      }
+    },
+    "parametros_moneda": { "type": "object" },
+    "tareas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "titulo", "fase", "estado"],
+        "properties": {
+          "id": { "type": "string" },
+          "titulo": { "type": "string", "minLength": 1 },
+          "fase": { "type": "string", "description": "id de una fase de data/pipeline.json" },
+          "requisito": { "type": "string", "description": "id de un requisito de esa fase" },
+          "estado": { "enum": ["pendiente", "en_progreso", "bloqueada", "hecha"] },
+          "prioridad": { "enum": ["alta", "media", "baja"] },
+          "responsable": { "type": "string" },
+          "estimacion_dias": { "type": "number", "minimum": 0 },
+          "vence": { "$ref": "#/definitions/fechaOpcional" },
+          "notas": { "type": "string" }
+        }
+      }
+    },
+    "corridas_frio": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "fecha", "resultado"],
+        "properties": {
+          "id": { "type": "string" },
+          "fecha": { "$ref": "#/definitions/fecha" },
+          "tipo": { "type": "string" },
+          "objetivo": { "type": "string" },
+          "duracion_horas": { "type": "number", "minimum": 0 },
+          "resultado": { "enum": ["ok", "con_incidencias", "fallida"] },
+          "nodos": { "type": "number", "minimum": 0 },
+          "bloques": { "type": "number", "minimum": 0 },
+          "metricas": { "type": "object" },
+          "incidencias": { "type": "array", "items": { "type": "string" } },
+          "notas": { "type": "string" }
+        }
+      }
+    },
+    "reportes_frio": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "fecha"],
+        "properties": {
+          "id": { "type": "string" },
+          "fecha": { "$ref": "#/definitions/fecha" },
+          "corrida": { "type": "string", "description": "id de una corrida del mismo proyecto" },
+          "autor": { "type": "string" },
+          "conclusion": { "type": "string" },
+          "hallazgos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "titulo", "severidad", "estado"],
+              "properties": {
+                "id": { "type": "string" },
+                "titulo": { "type": "string" },
+                "severidad": { "enum": ["critica", "alta", "media", "baja"] },
+                "impacto": { "type": "string" },
+                "mejora_propuesta": { "type": "string" },
+                "estado": { "enum": ["abierto", "en_progreso", "cerrado"] },
+                "tarea": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "bitacora": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fecha"],
+        "properties": {
+          "fecha": { "$ref": "#/definitions/fecha" },
+          "horas": { "type": "number", "minimum": 0 },
+          "personas": { "type": "number", "minimum": 1 },
+          "fase": { "type": "string" },
+          "elaborado": { "type": "array", "items": { "type": "string" } },
+          "notas": { "type": "string" }
+        }
+      }
+    },
+    "riesgos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "titulo"],
+        "properties": {
+          "id": { "type": "string" },
+          "titulo": { "type": "string" },
+          "probabilidad": { "enum": ["alta", "media", "baja"] },
+          "impacto": { "enum": ["alto", "medio", "bajo"] },
+          "mitigacion": { "type": "string" },
+          "estado": { "enum": ["abierto", "mitigado", "cerrado"] }
+        }
+      }
+    },
+    "resultado_final": {
+      "type": "object",
+      "properties": {
+        "landing_page": { "$ref": "#/definitions/hito" },
+        "genoma_marketing": { "$ref": "#/definitions/hito" },
+        "publicacion": { "$ref": "#/definitions/hito" },
+        "venta": {
+          "type": "object",
+          "properties": {
+            "estado": { "enum": ["pendiente", "en_progreso", "hecho"] },
+            "fecha_primera_venta": { "$ref": "#/definitions/fechaOpcional" },
+            "unidades_vendidas": { "type": "number", "minimum": 0 },
+            "ingresos": { "type": "number", "minimum": 0 },
+            "moneda": { "type": "string" },
+            "notas": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "fecha": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "fechaOpcional": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "hito": {
+      "type": "object",
+      "properties": {
+        "estado": { "enum": ["pendiente", "en_progreso", "hecho"] },
+        "url": { "type": "string" },
+        "fecha": { "$ref": "#/definitions/fechaOpcional" },
+        "notas": { "type": "string" }
+      }
+    }
+  }
+}

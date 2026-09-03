@@ -1,0 +1,172 @@
+{
+  "id": "konopy-coin",
+  "nombre": "Konopy Coin",
+  "ticker": "KNP",
+  "descripcion": "Moneda CryptoNote propia derivada del core de este repositorio, pensada como producto insignia de la plataforma.",
+  "estado": "en_pruebas",
+  "responsable": "E. Palomares",
+  "equipo": ["E. Palomares", "Dev 2", "Marketing"],
+  "repositorio": "https://github.com/konopy/cryptonote",
+  "fecha_inicio": "2026-06-01",
+  "fecha_objetivo": "2026-10-15",
+  "fecha_fin": null,
+  "estimacion_inicial_dias": 55,
+  "estimaciones": [
+    { "fecha": "2026-06-01", "dias_restantes": 55, "nota": "Estimación inicial: 55 días de trabajo efectivo." },
+    { "fecha": "2026-07-06", "dias_restantes": 40, "nota": "Revisión tras terminar el core: el génesis costó más de lo previsto." },
+    { "fecha": "2026-08-24", "dias_restantes": 26, "nota": "Revisión tras la tercera corrida en frío: quedan hallazgos altos abiertos y toda la parte comercial." }
+  ],
+  "parametros_moneda": {
+    "emision_total": "18446744073709551615 unidades atómicas",
+    "block_target_segundos": 120,
+    "block_reward": "emisión decreciente estilo CryptoNote",
+    "prefijo_direcciones": "KNP",
+    "puerto_p2p": 19800,
+    "puerto_rpc": 19801
+  },
+  "tareas": [
+    { "id": "t-001", "titulo": "Ficha de producto de Konopy Coin", "fase": "definicion", "requisito": "definicion.ficha", "estado": "hecha", "prioridad": "alta", "responsable": "E. Palomares", "estimacion_dias": 1, "vence": "2026-06-03", "notas": "" },
+    { "id": "t-002", "titulo": "Definir parámetros de emisión, dificultad y puertos", "fase": "definicion", "requisito": "definicion.parametros", "estado": "hecha", "prioridad": "alta", "responsable": "E. Palomares", "estimacion_dias": 2, "vence": "2026-06-05", "notas": "" },
+    { "id": "t-003", "titulo": "Cerrar alcance y lista de entregables", "fase": "definicion", "requisito": "definicion.alcance", "estado": "hecha", "prioridad": "media", "responsable": "E. Palomares", "estimacion_dias": 1, "vence": "2026-06-05", "notas": "" },
+    { "id": "t-004", "titulo": "Calendario y estimación inicial", "fase": "definicion", "requisito": "definicion.calendario", "estado": "hecha", "prioridad": "media", "responsable": "E. Palomares", "estimacion_dias": 1, "vence": "2026-06-06", "notas": "" },
+    { "id": "t-010", "titulo": "Fork del core y repositorio propio", "fase": "desarrollo", "requisito": "desarrollo.fork", "estado": "hecha", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 1, "vence": "2026-06-09", "notas": "" },
+    { "id": "t-011", "titulo": "Ajustar src/CryptoNoteConfig.h con los parámetros de la ficha", "fase": "desarrollo", "requisito": "desarrollo.config", "estado": "hecha", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 3, "vence": "2026-06-18", "notas": "" },
+    { "id": "t-012", "titulo": "Generar y fijar el bloque génesis", "fase": "desarrollo", "requisito": "desarrollo.genesis", "estado": "hecha", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 2, "vence": "2026-06-25", "notas": "Costó 6 días reales por el hex del génesis." },
+    { "id": "t-013", "titulo": "Compilación limpia en Linux y Windows", "fase": "desarrollo", "requisito": "desarrollo.compilacion", "estado": "hecha", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 4, "vence": "2026-07-03", "notas": "Windows pendiente de firmar binarios." },
+    { "id": "t-014", "titulo": "Definir seed nodes y checkpoints iniciales", "fase": "desarrollo", "requisito": "desarrollo.checkpoints", "estado": "en_progreso", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 2, "vence": "2026-09-05", "notas": "Falta el segundo seed node; sólo está 192.168.1.81 del laboratorio." },
+    { "id": "t-020", "titulo": "Escribir el plan de corridas en frío", "fase": "corridas_frio", "requisito": "corridas_frio.plan", "estado": "hecha", "prioridad": "alta", "responsable": "E. Palomares", "estimacion_dias": 1, "vence": "2026-07-10", "notas": "" },
+    { "id": "t-021", "titulo": "Corrida de arranque de red desde bloque 0", "fase": "corridas_frio", "requisito": "corridas_frio.arranque", "estado": "hecha", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 1, "vence": "2026-07-14", "notas": "" },
+    { "id": "t-022", "titulo": "Corrida de minado sostenido y ajuste de dificultad", "fase": "corridas_frio", "requisito": "corridas_frio.minado", "estado": "hecha", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 2, "vence": "2026-08-05", "notas": "" },
+    { "id": "t-023", "titulo": "Corrida de transacciones, mixin y recuperación de wallets", "fase": "corridas_frio", "requisito": "corridas_frio.transacciones", "estado": "en_progreso", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 3, "vence": "2026-09-08", "notas": "Repetir tras corregir el hallazgo h-03." },
+    { "id": "t-024", "titulo": "Corrida de carga con 8 nodos y caídas provocadas", "fase": "corridas_frio", "requisito": "corridas_frio.carga", "estado": "pendiente", "prioridad": "media", "responsable": "Dev 2", "estimacion_dias": 2, "vence": "2026-09-18", "notas": "" },
+    { "id": "t-030", "titulo": "Reporte de frío de la corrida cf-03", "fase": "estabilizacion", "requisito": "estabilizacion.reportes", "estado": "hecha", "prioridad": "alta", "responsable": "E. Palomares", "estimacion_dias": 1, "vence": "2026-08-25", "notas": "" },
+    { "id": "t-031", "titulo": "Cerrar hallazgos críticos y altos abiertos", "fase": "estabilizacion", "requisito": "estabilizacion.hallazgos", "estado": "bloqueada", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 4, "vence": "2026-09-10", "notas": "Bloqueada: falta hardware para reproducir el reorg del hallazgo h-03." },
+    { "id": "t-032", "titulo": "Aplicar y re-probar las mejoras aceptadas", "fase": "estabilizacion", "requisito": "estabilizacion.mejoras", "estado": "pendiente", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 3, "vence": "2026-09-20", "notas": "" },
+    { "id": "t-033", "titulo": "Congelar versión candidata y notas de versión", "fase": "estabilizacion", "requisito": "estabilizacion.congelado", "estado": "pendiente", "prioridad": "media", "responsable": "Dev 2", "estimacion_dias": 1, "vence": "2026-09-25", "notas": "" },
+    { "id": "t-040", "titulo": "Montar dos seed nodes en producción", "fase": "infraestructura", "requisito": "infraestructura.nodos", "estado": "pendiente", "prioridad": "alta", "responsable": "Dev 2", "estimacion_dias": 2, "vence": "2026-09-28", "notas": "" },
+    { "id": "t-041", "titulo": "Desplegar el explorador de bloques", "fase": "infraestructura", "requisito": "infraestructura.explorador", "estado": "pendiente", "prioridad": "media", "responsable": "Dev 2", "estimacion_dias": 2, "vence": "2026-10-02", "notas": "" },
+    { "id": "t-042", "titulo": "Publicar binarios y guía de instalación", "fase": "infraestructura", "requisito": "infraestructura.binarios", "estado": "pendiente", "prioridad": "media", "responsable": "Dev 2", "estimacion_dias": 1, "vence": "2026-10-05", "notas": "" },
+    { "id": "t-050", "titulo": "Identidad visual de Konopy Coin", "fase": "landing", "requisito": "landing.identidad", "estado": "en_progreso", "prioridad": "media", "responsable": "Marketing", "estimacion_dias": 3, "vence": "2026-09-12", "notas": "Logo en revisión." },
+    { "id": "t-051", "titulo": "Copy y propuesta de valor de la landing", "fase": "landing", "requisito": "landing.copy", "estado": "pendiente", "prioridad": "media", "responsable": "Marketing", "estimacion_dias": 2, "vence": "2026-09-22", "notas": "" }
+  ],
+  "corridas_frio": [
+    {
+      "id": "cf-01",
+      "fecha": "2026-07-13",
+      "tipo": "arranque",
+      "objetivo": "Levantar la red desde el bloque 0 con 3 nodos aislados y verificar sincronización.",
+      "duracion_horas": 5,
+      "resultado": "ok",
+      "nodos": 3,
+      "bloques": 214,
+      "metricas": { "tiempo_bloque_promedio_s": 118, "reorgs": 0, "peers_estables": 3 },
+      "incidencias": [],
+      "notas": "Arranque limpio. El génesis quedó validado."
+    },
+    {
+      "id": "cf-02",
+      "fecha": "2026-08-03",
+      "tipo": "minado",
+      "objetivo": "Minado sostenido 12 horas para observar el ajuste de dificultad y la emisión real.",
+      "duracion_horas": 12,
+      "resultado": "con_incidencias",
+      "nodos": 4,
+      "bloques": 361,
+      "metricas": { "tiempo_bloque_promedio_s": 143, "reorgs": 2, "peers_estables": 4 },
+      "incidencias": [
+        "El tiempo de bloque se desvía un 19% del objetivo tras subidas bruscas de hashrate.",
+        "Un nodo se quedó atrás 40 bloques y tardó 11 minutos en resincronizar."
+      ],
+      "notas": "La ventana de dificultad hereda valores del core original y no encaja con un block target de 120 s."
+    },
+    {
+      "id": "cf-03",
+      "fecha": "2026-08-21",
+      "tipo": "transacciones",
+      "objetivo": "Envíos con mixin 4, transacciones concurrentes y recuperación de wallet desde semilla.",
+      "duracion_horas": 9,
+      "resultado": "fallida",
+      "nodos": 5,
+      "bloques": 288,
+      "metricas": { "tiempo_bloque_promedio_s": 126, "reorgs": 4, "transacciones": 512, "transacciones_perdidas": 7 },
+      "incidencias": [
+        "7 transacciones desaparecieron del pool tras un reorg de 3 bloques.",
+        "simplewallet mostró saldo incorrecto hasta reiniciar el daemon."
+      ],
+      "notas": "Corrida detenida antes de tiempo. Hay que repetirla completa después de corregir."
+    }
+  ],
+  "reportes_frio": [
+    {
+      "id": "rf-01",
+      "fecha": "2026-07-14",
+      "corrida": "cf-01",
+      "autor": "E. Palomares",
+      "conclusion": "Arranque validado. Se puede pasar a corridas de minado.",
+      "hallazgos": [
+        { "id": "h-01", "titulo": "Los logs del daemon no marcan la hora con zona horaria", "severidad": "baja", "impacto": "Dificulta correlacionar eventos entre nodos durante las corridas.", "mejora_propuesta": "Añadir timestamp ISO-8601 con zona en el logger del daemon.", "estado": "cerrado", "tarea": "" }
+      ]
+    },
+    {
+      "id": "rf-02",
+      "fecha": "2026-08-04",
+      "corrida": "cf-02",
+      "autor": "Dev 2",
+      "conclusion": "El algoritmo de dificultad necesita reajuste antes de cualquier red pública.",
+      "hallazgos": [
+        { "id": "h-02", "titulo": "Ventana de dificultad heredada no encaja con block target de 120 s", "severidad": "alta", "impacto": "Tiempos de bloque inestables y emisión distinta a la publicada en la ficha.", "mejora_propuesta": "Recalcular DIFFICULTY_WINDOW y DIFFICULTY_CUT para 120 s y re-correr la corrida de minado.", "estado": "en_progreso", "tarea": "t-031" },
+        { "id": "h-04", "titulo": "Resincronización lenta de nodos rezagados", "severidad": "media", "impacto": "Un nodo tarda más de 10 minutos en volver a la cadena tras desconectarse.", "mejora_propuesta": "Subir el tamaño de lote de bloques en la sincronización y añadir métrica de retraso al RPC.", "estado": "abierto", "tarea": "" }
+      ]
+    },
+    {
+      "id": "rf-03",
+      "fecha": "2026-08-24",
+      "corrida": "cf-03",
+      "autor": "E. Palomares",
+      "conclusion": "Corrida fallida. No se avanza a infraestructura pública hasta cerrar h-03.",
+      "hallazgos": [
+        { "id": "h-03", "titulo": "Transacciones perdidas del pool tras un reorg", "severidad": "critica", "impacto": "Pérdida de transacciones confirmadas ante los usuarios: bloquea cualquier lanzamiento.", "mejora_propuesta": "Reinyectar al pool las transacciones de los bloques huérfanos y cubrirlo con una prueba automatizada de reorg.", "estado": "abierto", "tarea": "t-031" },
+        { "id": "h-05", "titulo": "simplewallet no refresca el saldo tras un reorg", "severidad": "alta", "impacto": "El usuario ve un saldo que no existe hasta reiniciar.", "mejora_propuesta": "Invalidar la caché del wallet al detectar cambio de cadena y forzar refresco.", "estado": "abierto", "tarea": "t-031" },
+        { "id": "h-06", "titulo": "Sin prueba automatizada que cubra reorgs", "severidad": "media", "impacto": "Los errores de reorg sólo se detectan a mano en corridas largas.", "mejora_propuesta": "Añadir un test de integración en tests/ que provoque un reorg de 3 bloques.", "estado": "abierto", "tarea": "" }
+      ]
+    }
+  ],
+  "bitacora": [
+    { "fecha": "2026-06-01", "horas": 5, "personas": 1, "fase": "definicion", "elaborado": ["Ficha inicial del producto", "Investigación de parámetros de monedas comparables"], "notas": "" },
+    { "fecha": "2026-06-02", "horas": 6, "personas": 1, "fase": "definicion", "elaborado": ["Parámetros de emisión y block target", "Puertos P2P/RPC reservados"], "notas": "" },
+    { "fecha": "2026-06-04", "horas": 4, "personas": 1, "fase": "definicion", "elaborado": ["Alcance cerrado y lista de entregables"], "notas": "" },
+    { "fecha": "2026-06-05", "horas": 3, "personas": 1, "fase": "definicion", "elaborado": ["Calendario y estimación inicial de 55 días"], "notas": "" },
+    { "fecha": "2026-06-09", "horas": 6, "personas": 2, "fase": "desarrollo", "elaborado": ["Fork del core y repositorio propio", "Entorno de compilación en el servidor 192.168.1.81"], "notas": "" },
+    { "fecha": "2026-06-10", "horas": 7, "personas": 2, "fase": "desarrollo", "elaborado": ["Primera pasada de CryptoNoteConfig.h"], "notas": "" },
+    { "fecha": "2026-06-11", "horas": 7, "personas": 2, "fase": "desarrollo", "elaborado": ["Prefijo de direcciones y nombres de la moneda en todo el código"], "notas": "" },
+    { "fecha": "2026-06-16", "horas": 6, "personas": 1, "fase": "desarrollo", "elaborado": ["Ajuste de emisión y reward"], "notas": "" },
+    { "fecha": "2026-06-18", "horas": 8, "personas": 2, "fase": "desarrollo", "elaborado": ["Generación del bloque génesis", "Primer intento fallido de fijar el hex"], "notas": "" },
+    { "fecha": "2026-06-19", "horas": 8, "personas": 1, "fase": "desarrollo", "elaborado": ["Génesis regenerado y validado en tres máquinas"], "notas": "" },
+    { "fecha": "2026-06-23", "horas": 5, "personas": 1, "fase": "desarrollo", "elaborado": ["Limpieza de referencias al proyecto original"], "notas": "" },
+    { "fecha": "2026-06-25", "horas": 7, "personas": 2, "fase": "desarrollo", "elaborado": ["Compilación limpia en Linux", "Ajuste de CMakeLists para el nuevo nombre"], "notas": "" },
+    { "fecha": "2026-06-30", "horas": 6, "personas": 1, "fase": "desarrollo", "elaborado": ["Compilación en Windows con Boost 1.84"], "notas": "Dos días perdidos por dependencias." },
+    { "fecha": "2026-07-02", "horas": 5, "personas": 1, "fase": "desarrollo", "elaborado": ["Binarios de prueba para el equipo"], "notas": "" },
+    { "fecha": "2026-07-06", "horas": 4, "personas": 1, "fase": "desarrollo", "elaborado": ["Revisión de estimación: quedan 40 días"], "notas": "" },
+    { "fecha": "2026-07-09", "horas": 5, "personas": 1, "fase": "corridas_frio", "elaborado": ["Plan de corridas en frío con 5 escenarios"], "notas": "" },
+    { "fecha": "2026-07-13", "horas": 8, "personas": 2, "fase": "corridas_frio", "elaborado": ["Corrida cf-01 de arranque de red", "214 bloques minados en laboratorio"], "notas": "" },
+    { "fecha": "2026-07-14", "horas": 4, "personas": 1, "fase": "estabilizacion", "elaborado": ["Reporte de frío rf-01"], "notas": "" },
+    { "fecha": "2026-07-21", "horas": 6, "personas": 1, "fase": "desarrollo", "elaborado": ["Timestamps con zona horaria en el logger (hallazgo h-01)"], "notas": "" },
+    { "fecha": "2026-08-03", "horas": 10, "personas": 2, "fase": "corridas_frio", "elaborado": ["Corrida cf-02 de minado de 12 horas"], "notas": "" },
+    { "fecha": "2026-08-04", "horas": 5, "personas": 1, "fase": "estabilizacion", "elaborado": ["Reporte de frío rf-02", "Hallazgos h-02 y h-04 documentados"], "notas": "" },
+    { "fecha": "2026-08-11", "horas": 7, "personas": 1, "fase": "estabilizacion", "elaborado": ["Primer intento de recálculo de la ventana de dificultad"], "notas": "" },
+    { "fecha": "2026-08-21", "horas": 9, "personas": 2, "fase": "corridas_frio", "elaborado": ["Corrida cf-03 de transacciones", "Detección de pérdida de transacciones en reorg"], "notas": "Corrida detenida antes de tiempo." },
+    { "fecha": "2026-08-24", "horas": 6, "personas": 1, "fase": "estabilizacion", "elaborado": ["Reporte de frío rf-03", "Revisión de estimación: quedan 26 días"], "notas": "" },
+    { "fecha": "2026-08-28", "horas": 5, "personas": 1, "fase": "estabilizacion", "elaborado": ["Reproducción parcial del reorg en laboratorio"], "notas": "Falta hardware para el escenario completo." },
+    { "fecha": "2026-09-01", "horas": 4, "personas": 1, "fase": "landing", "elaborado": ["Primeras propuestas de logo e identidad"], "notas": "" }
+  ],
+  "riesgos": [
+    { "id": "r-01", "titulo": "El hallazgo crítico h-03 puede exigir cambios profundos en el pool de transacciones", "probabilidad": "media", "impacto": "alto", "mitigacion": "Aislar el cambio y cubrirlo con prueba de reorg antes de tocar nada más.", "estado": "abierto" },
+    { "id": "r-02", "titulo": "Toda la fase comercial (genoma, publicación, venta) sigue sin planificar", "probabilidad": "alta", "impacto": "alto", "mitigacion": "Arrancar el genoma de marketing en paralelo a la estabilización, no después.", "estado": "abierto" }
+  ],
+  "resultado_final": {
+    "landing_page": { "estado": "en_progreso", "url": "", "fecha": null, "notas": "Identidad visual en revisión; copy sin empezar." },
+    "genoma_marketing": { "estado": "pendiente", "url": "", "fecha": null, "notas": "Sin arrancar." },
+    "publicacion": { "estado": "pendiente", "url": "", "fecha": null, "notas": "Bloqueada por los hallazgos de frío abiertos." },
+    "venta": { "estado": "pendiente", "fecha_primera_venta": null, "unidades_vendidas": 0, "ingresos": 0, "moneda": "USD", "notas": "" }
+  }
+}

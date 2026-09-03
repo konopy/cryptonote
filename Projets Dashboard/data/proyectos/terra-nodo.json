@@ -1,0 +1,49 @@
+{
+  "id": "terra-nodo",
+  "nombre": "Terra Nodo",
+  "ticker": "TRR",
+  "descripcion": "Moneda regional orientada a comercios locales. Proyecto recién arrancado.",
+  "estado": "planificado",
+  "responsable": "E. Palomares",
+  "equipo": ["E. Palomares"],
+  "repositorio": "",
+  "fecha_inicio": "2026-08-17",
+  "fecha_objetivo": "2026-12-18",
+  "fecha_fin": null,
+  "estimacion_inicial_dias": 50,
+  "estimaciones": [
+    { "fecha": "2026-08-17", "dias_restantes": 50, "nota": "Estimación inicial, sin equipo asignado todavía." }
+  ],
+  "parametros_moneda": {
+    "emision_total": "",
+    "block_target_segundos": 0,
+    "block_reward": "",
+    "prefijo_direcciones": "",
+    "puerto_p2p": 0,
+    "puerto_rpc": 0
+  },
+  "tareas": [
+    { "id": "t-001", "titulo": "Ficha de producto de Terra Nodo", "fase": "definicion", "requisito": "definicion.ficha", "estado": "hecha", "prioridad": "alta", "responsable": "E. Palomares", "estimacion_dias": 1, "vence": "2026-08-20", "notas": "" },
+    { "id": "t-002", "titulo": "Definir parámetros de la moneda", "fase": "definicion", "requisito": "definicion.parametros", "estado": "en_progreso", "prioridad": "alta", "responsable": "E. Palomares", "estimacion_dias": 2, "vence": "2026-08-31", "notas": "Falta decidir emisión total y block target." },
+    { "id": "t-003", "titulo": "Cerrar alcance y entregables", "fase": "definicion", "requisito": "definicion.alcance", "estado": "pendiente", "prioridad": "alta", "responsable": "E. Palomares", "estimacion_dias": 1, "vence": "2026-09-04", "notas": "" },
+    { "id": "t-004", "titulo": "Calendario y estimación", "fase": "definicion", "requisito": "definicion.calendario", "estado": "pendiente", "prioridad": "media", "responsable": "E. Palomares", "estimacion_dias": 1, "vence": "2026-09-08", "notas": "" },
+    { "id": "t-010", "titulo": "Fork del core para Terra Nodo", "fase": "desarrollo", "requisito": "desarrollo.fork", "estado": "pendiente", "prioridad": "alta", "responsable": "", "estimacion_dias": 1, "vence": "2026-09-15", "notas": "Sin responsable asignado." },
+    { "id": "t-011", "titulo": "Ajustar CryptoNoteConfig.h", "fase": "desarrollo", "requisito": "desarrollo.config", "estado": "pendiente", "prioridad": "alta", "responsable": "", "estimacion_dias": 3, "vence": "2026-09-25", "notas": "" }
+  ],
+  "corridas_frio": [],
+  "reportes_frio": [],
+  "bitacora": [
+    { "fecha": "2026-08-17", "horas": 4, "personas": 1, "fase": "definicion", "elaborado": ["Idea de producto y primera ficha"], "notas": "" },
+    { "fecha": "2026-08-19", "horas": 3, "personas": 1, "fase": "definicion", "elaborado": ["Investigación de comercios locales interesados"], "notas": "" },
+    { "fecha": "2026-08-31", "horas": 3, "personas": 1, "fase": "definicion", "elaborado": ["Borrador de parámetros de emisión"], "notas": "Sin cerrar." }
+  ],
+  "riesgos": [
+    { "id": "r-01", "titulo": "No hay desarrollador asignado", "probabilidad": "alta", "impacto": "alto", "mitigacion": "Reservar a Dev 2 en cuanto Konopy Coin congele versión.", "estado": "abierto" }
+  ],
+  "resultado_final": {
+    "landing_page": { "estado": "pendiente", "url": "", "fecha": null, "notas": "" },
+    "genoma_marketing": { "estado": "pendiente", "url": "", "fecha": null, "notas": "" },
+    "publicacion": { "estado": "pendiente", "url": "", "fecha": null, "notas": "" },
+    "venta": { "estado": "pendiente", "fecha_primera_venta": null, "unidades_vendidas": 0, "ingresos": 0, "moneda": "USD", "notas": "" }
+  }
+}

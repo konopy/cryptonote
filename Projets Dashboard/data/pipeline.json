@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "descripcion": "Modelo canónico de un proyecto completo: desde la definición hasta la venta. Cada fase tiene requisitos obligatorios; el dashboard compara cada proyecto contra este modelo para decir exactamente qué falta.",
+  "fases": [
+    {
+      "id": "definicion",
+      "nombre": "Definición y alcance",
+      "peso": 1,
+      "descripcion": "Qué moneda/producto se va a construir, con qué parámetros y para quién.",
+      "requisitos": [
+        { "id": "definicion.ficha", "nombre": "Ficha del proyecto", "detalle": "Nombre, ticker, símbolo, propósito y público objetivo definidos por escrito." },
+        { "id": "definicion.parametros", "nombre": "Parámetros de la moneda", "detalle": "Emisión total, block reward, block target, dificultad, prefijo de direcciones, puertos P2P/RPC." },
+        { "id": "definicion.alcance", "nombre": "Alcance y entregables", "detalle": "Lista cerrada de entregables y de lo que queda fuera del alcance." },
+        { "id": "definicion.calendario", "nombre": "Calendario y estimación inicial", "detalle": "Fecha de inicio, fecha objetivo y estimación de días de trabajo." }
+      ]
+    },
+    {
+      "id": "desarrollo",
+      "nombre": "Desarrollo y parametrización",
+      "peso": 3,
+      "descripcion": "Fork del core, configuración de CryptoNoteConfig, génesis y compilación reproducible.",
+      "requisitos": [
+        { "id": "desarrollo.fork", "nombre": "Fork del core creado", "detalle": "Repositorio propio del proyecto, con historial y remoto configurado." },
+        { "id": "desarrollo.config", "nombre": "CryptoNoteConfig ajustado", "detalle": "src/CryptoNoteConfig.h con los parámetros de la ficha aplicados." },
+        { "id": "desarrollo.genesis", "nombre": "Bloque génesis generado", "detalle": "Génesis tx hex generado, fijado en el config y verificado." },
+        { "id": "desarrollo.compilacion", "nombre": "Compilación en las plataformas objetivo", "detalle": "Daemon, simplewallet y walletd compilan sin errores en las plataformas objetivo." },
+        { "id": "desarrollo.checkpoints", "nombre": "Semillas y checkpoints", "detalle": "Seed nodes y checkpoints iniciales definidos en el código." }
+      ]
+    },
+    {
+      "id": "corridas_frio",
+      "nombre": "Corridas en frío",
+      "peso": 2,
+      "descripcion": "Arranques de red controlados en entorno aislado, antes de exponer nada al público.",
+      "requisitos": [
+        { "id": "corridas_frio.plan", "nombre": "Plan de corridas en frío", "detalle": "Escenarios a probar, criterios de éxito y datos a medir en cada corrida." },
+        { "id": "corridas_frio.arranque", "nombre": "Corrida de arranque de red", "detalle": "Red levantada desde el bloque 0 con varios nodos y sincronización correcta." },
+        { "id": "corridas_frio.minado", "nombre": "Corrida de minado y dificultad", "detalle": "Minado sostenido, ajuste de dificultad y emisión verificados contra lo definido." },
+        { "id": "corridas_frio.transacciones", "nombre": "Corrida de transacciones y wallets", "detalle": "Envíos, recepciones, mixin, reorgs y recuperación de wallets probados." },
+        { "id": "corridas_frio.carga", "nombre": "Corrida de carga y resistencia", "detalle": "Comportamiento bajo volumen alto de transacciones y con nodos cayendo." }
+      ]
+    },
+    {
+      "id": "estabilizacion",
+      "nombre": "Reportes de frío y estabilización",
+      "peso": 2,
+      "descripcion": "Cada corrida deja un reporte con hallazgos; los hallazgos se cierran y la plataforma mejora.",
+      "requisitos": [
+        { "id": "estabilizacion.reportes", "nombre": "Reporte por cada corrida", "detalle": "Un reporte de frío escrito por corrida, con hallazgos, severidad y mejora propuesta." },
+        { "id": "estabilizacion.hallazgos", "nombre": "Hallazgos críticos cerrados", "detalle": "Ningún hallazgo de severidad crítica o alta queda abierto." },
+        { "id": "estabilizacion.mejoras", "nombre": "Mejoras aplicadas a la plataforma", "detalle": "Las mejoras aceptadas están implementadas y re-probadas en una corrida posterior." },
+        { "id": "estabilizacion.congelado", "nombre": "Versión congelada para lanzamiento", "detalle": "Tag/release candidato con binarios reproducibles y notas de versión." }
+      ]
+    },
+    {
+      "id": "infraestructura",
+      "nombre": "Infraestructura pública",
+      "peso": 2,
+      "descripcion": "Lo que tiene que estar en línea para que la moneda exista de cara al público.",
+      "requisitos": [
+        { "id": "infraestructura.nodos", "nombre": "Nodos semilla en producción", "detalle": "Al menos dos seed nodes estables, monitorizados y con respaldo." },
+        { "id": "infraestructura.explorador", "nombre": "Explorador de bloques", "detalle": "Block explorer público funcionando contra la red real." },
+        { "id": "infraestructura.pool", "nombre": "Pool de minado", "detalle": "Pool operativo y documentado para mineros externos." },
+        { "id": "infraestructura.binarios", "nombre": "Binarios y guías de instalación", "detalle": "Releases descargables y guía de instalación/uso publicada." }
+      ]
+    },
+    {
+      "id": "landing",
+      "nombre": "Landing page de producto",
+      "peso": 1,
+      "descripcion": "La página de producto que convierte visitantes en usuarios y compradores.",
+      "requisitos": [
+        { "id": "landing.identidad", "nombre": "Identidad visual", "detalle": "Logo, paleta, tipografía y assets del proyecto." },
+        { "id": "landing.copy", "nombre": "Copy y propuesta de valor", "detalle": "Titular, propuesta de valor, beneficios, prueba social y llamada a la acción." },
+        { "id": "landing.publicada", "nombre": "Landing publicada", "detalle": "Dominio, hosting, HTTPS y página en línea." },
+        { "id": "landing.analitica", "nombre": "Analítica y captación", "detalle": "Medición de visitas/conversión y captura de correos operativas." }
+      ]
+    },
+    {
+      "id": "genoma_marketing",
+      "nombre": "Genoma de marketing",
+      "peso": 2,
+      "descripcion": "El ADN comercial del producto: quién es, a quién le habla, con qué mensajes y por qué canales.",
+      "requisitos": [
+        { "id": "genoma.posicionamiento", "nombre": "Posicionamiento y diferenciador", "detalle": "Categoría, competidores y por qué este proyecto es distinto." },
+        { "id": "genoma.audiencia", "nombre": "Audiencias y buyer persona", "detalle": "Segmentos, dolores, objeciones y disparadores de compra." },
+        { "id": "genoma.mensajes", "nombre": "Matriz de mensajes", "detalle": "Mensaje maestro y variantes por segmento y por canal." },
+        { "id": "genoma.canales", "nombre": "Canales y calendario", "detalle": "Canales priorizados, calendario de contenidos y presupuesto." },
+        { "id": "genoma.metricas", "nombre": "Métricas y objetivos", "detalle": "KPIs, meta por canal y forma de medirlos." }
+      ]
+    },
+    {
+      "id": "publicacion",
+      "nombre": "Publicación y lanzamiento",
+      "peso": 2,
+      "descripcion": "Salida pública de la moneda y del producto.",
+      "requisitos": [
+        { "id": "publicacion.anuncio", "nombre": "Anuncio de lanzamiento", "detalle": "Hilo de anuncio, nota de prensa y publicaciones en redes y foros." },
+        { "id": "publicacion.listados", "nombre": "Listados y directorios", "detalle": "Alta en directorios de monedas, agregadores y comunidades." },
+        { "id": "publicacion.red_viva", "nombre": "Red en producción abierta", "detalle": "Red pública minando de forma estable con mineros externos." },
+        { "id": "publicacion.soporte", "nombre": "Canales de soporte", "detalle": "Comunidad, soporte y documentación pública atendidos." }
+      ]
+    },
+    {
+      "id": "venta",
+      "nombre": "Comercialización y venta",
+      "peso": 2,
+      "descripcion": "El proyecto no está terminado hasta que vende.",
+      "requisitos": [
+        { "id": "venta.oferta", "nombre": "Oferta y precios definidos", "detalle": "Qué se vende exactamente, a qué precio y con qué condiciones." },
+        { "id": "venta.cobro", "nombre": "Medio de cobro operativo", "detalle": "Pasarela, exchange u OTC probado con una transacción real." },
+        { "id": "venta.primera_venta", "nombre": "Primera venta cerrada", "detalle": "Al menos una venta real cobrada y registrada." },
+        { "id": "venta.seguimiento", "nombre": "Seguimiento comercial", "detalle": "Registro de ventas, ingresos y siguientes pasos comerciales." }
+      ]
+    }
+  ],
+  "severidades": ["critica", "alta", "media", "baja"],
+  "estados_tarea": ["pendiente", "en_progreso", "bloqueada", "hecha"],
+  "estados_proyecto": ["planificado", "en_desarrollo", "en_pruebas", "en_lanzamiento", "en_venta", "terminado", "pausado"]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "mi-proyecto",
+  "nombre": "Mi Proyecto",
+  "ticker": "MPR",
+  "descripcion": "Una línea explicando qué es este proyecto.",
+  "estado": "planificado",
+  "responsable": "Nombre del responsable",
+  "equipo": [],
+  "repositorio": "",
+  "fecha_inicio": "2026-01-01",
+  "fecha_objetivo": "2026-03-31",
+  "fecha_fin": null,
+  "estimacion_inicial_dias": 45,
+  "estimaciones": [
+    { "fecha": "2026-01-01", "dias_restantes": 45, "nota": "Estimación inicial al arrancar." }
+  ],
+  "parametros_moneda": {
+    "emision_total": "",
+    "block_target_segundos": 0,
+    "block_reward": "",
+    "prefijo_direcciones": "",
+    "puerto_p2p": 0,
+    "puerto_rpc": 0
+  },
+  "tareas": [
+    {
+      "id": "t-001",
+      "titulo": "Redactar la ficha del proyecto",
+      "fase": "definicion",
+      "requisito": "definicion.ficha",
+      "estado": "pendiente",
+      "prioridad": "alta",
+      "responsable": "",
+      "estimacion_dias": 1,
+      "vence": "2026-01-05",
+      "notas": ""
+    }
+  ],
+  "corridas_frio": [
+    {
+      "id": "cf-01",
+      "fecha": "2026-02-01",
+      "tipo": "arranque",
+      "objetivo": "Levantar la red desde el bloque 0 con 3 nodos.",
+      "duracion_horas": 4,
+      "resultado": "ok",
+      "nodos": 3,
+      "bloques": 120,
+      "metricas": { "tiempo_bloque_promedio_s": 120, "reorgs": 0 },
+      "incidencias": [],
+      "notas": ""
+    }
+  ],
+  "reportes_frio": [
+    {
+      "id": "rf-01",
+      "fecha": "2026-02-02",
+      "corrida": "cf-01",
+      "autor": "",
+      "conclusion": "Resumen de la corrida y decisión tomada.",
+      "hallazgos": [
+        {
+          "id": "h-01",
+          "titulo": "Descripción corta del problema detectado",
+          "severidad": "media",
+          "impacto": "Qué se rompe o qué riesgo implica.",
+          "mejora_propuesta": "Qué cambio concreto mejora la plataforma.",
+          "estado": "abierto",
+          "tarea": ""
+        }
+      ]
+    }
+  ],
+  "bitacora": [
+    {
+      "fecha": "2026-01-02",
+      "horas": 6,
+      "personas": 1,
+      "fase": "definicion",
+      "elaborado": ["Qué se produjo ese día, en frases cortas."],
+      "notas": ""
+    }
+  ],
+  "riesgos": [
+    { "id": "r-01", "titulo": "Riesgo identificado", "probabilidad": "media", "impacto": "alto", "mitigacion": "", "estado": "abierto" }
+  ],
+  "resultado_final": {
+    "landing_page": { "estado": "pendiente", "url": "", "fecha": null, "notas": "" },
+    "genoma_marketing": { "estado": "pendiente", "url": "", "fecha": null, "notas": "" },
+    "publicacion": { "estado": "pendiente", "url": "", "fecha": null, "notas": "" },
+    "venta": { "estado": "pendiente", "fecha_primera_venta": null, "unidades_vendidas": 0, "ingresos": 0, "moneda": "USD", "notas": "" }
+  }
+}
